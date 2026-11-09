@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mujoco model="Venti_basic_skin">
+  <!-- PMX-derived visual / kinematic template. Physics are placeholders. -->
+  <!-- Fixed base, gravity off, no contacts, no actuators. Joint zero = original A-pose. -->
+  <compiler angle="degree" autolimits="true" inertiafromgeom="false" meshdir="assets/meshes" texturedir="assets/textures" fusestatic="false" />
+  <option timestep="0.002" gravity="0 0 0" />
+  <statistic center="0 0 0.77" extent="1.8" />
+  <visual>
+    <global azimuth="190" elevation="-8" offwidth="1000" offheight="1000" />
+    <headlight ambient="0.55 0.55 0.55" diffuse="0.5 0.5 0.5" specular="0 0 0" />
+    <rgba haze="0.92 0.94 0.96 1" />
+  </visual>
+  <default>
+    <joint type="hinge" limited="false" damping="1" armature="0.01" />
+    <geom contype="0" conaffinity="0" density="0" group="2" />
+  </default>
+  <asset>
+    <texture name="sky" type="skybox" builtin="gradient" rgb1="0.82 0.87 0.92" rgb2="0.96 0.97 0.98" width="512" height="3072" />
+    <texture name="tex_00" type="2d" file="tex_00.png" />
+    <texture name="tex_01" type="2d" file="tex_01.png" />
+    <texture name="tex_02" type="2d" file="tex_02.png" />
+    <texture name="tex_05" type="2d" file="tex_05.png" />
+    <material name="mat_00" rgba="1 1 1 1" specular="0.05" shininess="0.05" texture="tex_00" />
+    <material name="mat_01" rgba="1 1 1 1" specular="0.05" shininess="0.05" texture="tex_00" />
+    <material name="mat_02" rgba="1 1 1 1" specular="0.05" shininess="0.05" texture="tex_01" />
+    <material name="mat_03" rgba="1 1 1 1" specular="0.05" shininess="0.05" texture="tex_02" />
+    <material name="mat_04" rgba="1 1 1 1" specular="0.05" shininess="0.05" texture="tex_02" />
+    <material name="mat_05" rgba="1 1 1 1" specular="0.05" shininess="0.05" texture="tex_01" />
+    <material name="mat_06" rgba="1 1 1 1" specular="0.05" shininess="0.05" texture="tex_01" />
+    <material name="mat_07" rgba="1 1 1 1" specular="0.05" shininess="0.05" texture="tex_01" />
+    <material name="mat_08" rgba="1 1 1 1" specular="0.05" shininess="0.05" texture="tex_01" />
+  </asset>
+  <worldbody>
+    <light name="key_light" pos="3 -3 4" dir="-3 3 -4" diffuse="0.55 0.55 0.55" />
+    <geom name="visual_floor" type="plane" size="3 3 0.05" rgba="0.88 0.9 0.92 1" group="0" />
+    <body name="pelvis" pos="0.0428028011 0 0.846776637">
+      <!-- PMX bone 13: 下半身 -->
+      <!-- Fixed root. Add <freejoint name="root"/> here for a floating base. -->
+      <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01" />
+      <body name="waist" pos="7.05718994e-07 0 0.00412635803">
+        <!-- PMX bone 11: 上半身 -->
+        <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01" />
+        <joint name="waist_roll" axis="1 0 0" />
+        <joint name="waist_pitch" axis="0 1 0" />
+        <joint name="waist_yaw" axis="0 0 1" />
+        <body name="chest" pos="0.00136316776 0 0.137854156">
+          <!-- PMX bone 12: 上半身2 -->
+          <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01" />
+          <body name="neck" pos="-0.0180730414 0 0.164969254">
+            <!-- PMX bone 14: 首 -->
+            <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01" />
+            <joint name="neck_yaw" axis="0 0 1" />
+            <joint name="neck_pitch" axis="0 1 0" />
+            <body name="head" pos="0.012869122 0 0.0774298096">
+              <!-- PMX bone 15: 頭 -->
+              <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01" />
+            </body>
+          </body>
+          <body name="right_clavicle" pos="-0.0272732079 -0.028735497 0.151353531">
+            <!-- PMX bone 17: 右肩 -->
+            <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01" />
+            <body name="right_upper_arm" pos="-0.0039048624 -0.0751194644 -0.0441655731">
+              <!-- PMX bone 19: 右腕 -->
+              <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01" />
+              <joint name="right_shoulder_roll" axis="1 0 0" />
+              <joint name="right_shoulder_pitch" axis="0 1 0" />
+              <joint name="right_shoulder_yaw" axis="0 0 1" />
+              <body name="right_forearm" pos="-0.00405404031 -0.137328453 -0.105163879">
+                <!-- PMX bone 24: 右ひじ -->
+                <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01" />
+                <joint name="right_elbow" axis="0 -0.613692105 0.789545439" />
+                <body name="right_hand" pos="0.00422065318 -0.132919559 -0.103314743">
+                  <!-- PMX bone 31: 右手首 -->
+                  <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01" />
+                  <joint name="right_wrist_pitch" axis="0 1 0" />
+                  <joint name="right_wrist_roll" axis="1 0 0" />
+                </body>
+              </body>
+            </body>
+          </body>
+          <body name="left_clavicle" pos="-0.0272732079 0.028735497 0.151353531">
+            <!-- PMX bone 35: 左肩 -->
+            <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01" />
+            <body name="left_upper_arm" pos="-0.0039048624 0.0751194644 -0.0441655731">
+              <!-- PMX bone 37: 左腕 -->
+              <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01" />
+              <joint name="left_shoulder_roll" axis="1 0 0" />
+              <joint name="left_shoulder_pitch" axis="0 1 0" />
+              <joint name="left_shoulder_yaw" axis="0 0 1" />
+              <body name="left_forearm" pos="-0.00405404031 0.137328453 -0.105163879">
+                <!-- PMX bone 42: 左ひじ -->
+                <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01" />
+                <joint name="left_elbow" axis="0 -0.613692105 -0.789545439" />
+                <body name="left_hand" pos="0.00422065318 0.132919559 -0.103314743">
+                  <!-- PMX bone 49: 左手首 -->
+                  <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01" />
+                  <joint name="left_wrist_pitch" axis="0 1 0" />
+                  <joint name="left_wrist_roll" axis="1 0 0" />
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="right_thigh" pos="-0.0145505381 -0.0588971043 -0.0611756897">
+        <!-- PMX bone 58: 右足 -->
+        <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01" />
+        <joint name="right_hip_roll" axis="1 0 0" />
+        <joint name="right_hip_pitch" axis="0 1 0" />
+        <joint name="right_hip_yaw" axis="0 0 1" />
+        <body name="right_shin" pos="1.09124184e-05 0.00697787285 -0.368055267">
+          <!-- PMX bone 59: 右ひざ -->
+          <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01" />
+          <joint name="right_knee" axis="0 1 0" />
+          <body name="right_foot" pos="-0.0273214664 0.00587427139 -0.331157742">
+            <!-- PMX bone 60: 右足首 -->
+            <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01" />
+            <joint name="right_ankle_pitch" axis="0 1 0" />
+            <joint name="right_ankle_roll" axis="1 0 0" />
+          </body>
+        </body>
+      </body>
+      <body name="left_thigh" pos="-0.0145505381 0.0588971043 -0.0611756897">
+        <!-- PMX bone 62: 左足 -->
+        <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01" />
+        <joint name="left_hip_roll" axis="1 0 0" />
+        <joint name="left_hip_pitch" axis="0 1 0" />
+        <joint name="left_hip_yaw" axis="0 0 1" />
+        <body name="left_shin" pos="1.09124184e-05 -0.00697787285 -0.368055267">
+          <!-- PMX bone 63: 左ひざ -->
+          <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01" />
+          <joint name="left_knee" axis="0 1 0" />
+          <body name="left_foot" pos="-0.0273214664 -0.00587427139 -0.331157742">
+            <!-- PMX bone 64: 左足首 -->
+            <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01" />
+            <joint name="left_ankle_pitch" axis="0 1 0" />
+            <joint name="left_ankle_roll" axis="1 0 0" />
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+  <deformable>
+    <skin name="skin_m00" file="../skins/skin_m00.skn" material="mat_00" group="2" />
+    <skin name="skin_m01" file="../skins/skin_m01.skn" material="mat_01" group="2" />
+    <skin name="skin_m02" file="../skins/skin_m02.skn" material="mat_02" group="2" />
+    <skin name="skin_m03" file="../skins/skin_m03.skn" material="mat_03" group="2" />
+    <skin name="skin_m04" file="../skins/skin_m04.skn" material="mat_04" group="2" />
+    <skin name="skin_m05" file="../skins/skin_m05.skn" material="mat_05" group="2" />
+    <skin name="skin_m06" file="../skins/skin_m06.skn" material="mat_06" group="2" />
+    <skin name="skin_m07" file="../skins/skin_m07.skn" material="mat_07" group="2" />
+    <skin name="skin_m08" file="../skins/skin_m08.skn" material="mat_08" group="2" />
+  </deformable>
+</mujoco>

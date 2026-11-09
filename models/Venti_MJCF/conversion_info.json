@@ -1,0 +1,443 @@
+{
+  "source": "C:\\Users\\user\\Desktop\\myprojects\\Embodied Intelligence\\Venti\\Venti.pmx",
+  "source_model": "温迪",
+  "source_vertices": 16211,
+  "source_faces": 20703,
+  "source_bones": 355,
+  "robot_bodies": 19,
+  "hinge_joints": 29,
+  "meters_per_pmx_unit": 0.08,
+  "visual_height_m": 1.5407998451590539,
+  "coordinates": "X forward, Y left, Z up; PMX (x,y,z) -> (-z,x,y)*scale + floor offset",
+  "floor_offset_m": [
+    0.0,
+    0.0,
+    0.004619730412960052
+  ],
+  "source_materials": [
+    {
+      "id": 0,
+      "source_name": "眼白",
+      "texture": 0,
+      "faces": 1038
+    },
+    {
+      "id": 1,
+      "source_name": "脸",
+      "texture": 0,
+      "faces": 1648
+    },
+    {
+      "id": 2,
+      "source_name": "皮肤",
+      "texture": 1,
+      "faces": 2900
+    },
+    {
+      "id": 3,
+      "source_name": "眼睛",
+      "texture": 2,
+      "faces": 196
+    },
+    {
+      "id": 4,
+      "source_name": "头发",
+      "texture": 2,
+      "faces": 2277
+    },
+    {
+      "id": 5,
+      "source_name": "披风",
+      "texture": 1,
+      "faces": 3516
+    },
+    {
+      "id": 6,
+      "source_name": "衣服",
+      "texture": 1,
+      "faces": 6952
+    },
+    {
+      "id": 7,
+      "source_name": "袜子",
+      "texture": 1,
+      "faces": 848
+    },
+    {
+      "id": 8,
+      "source_name": "帽子",
+      "texture": 1,
+      "faces": 886
+    }
+  ],
+  "body_positions_world": {
+    "pelvis": [
+      0.042802801132202146,
+      0.0,
+      0.8467766365408897
+    ],
+    "waist": [
+      0.04280350685119629,
+      0.0,
+      0.8509029945731164
+    ],
+    "chest": [
+      0.044166674613952635,
+      0.0,
+      0.9887571510672569
+    ],
+    "neck": [
+      0.02609363317489624,
+      0.0,
+      1.153726404607296
+    ],
+    "head": [
+      0.038962755203247074,
+      0.0,
+      1.2311562141776085
+    ],
+    "right_clavicle": [
+      0.016893466711044313,
+      -0.028735496997833253,
+      1.140110681951046
+    ],
+    "right_upper_arm": [
+      0.012988604307174682,
+      -0.10385496139526368,
+      1.0959451088309289
+    ],
+    "right_forearm": [
+      0.008934563994407655,
+      -0.24118341445922853,
+      0.9907812294363976
+    ],
+    "right_hand": [
+      0.013155217170715333,
+      -0.3741029739379883,
+      0.8874664863944054
+    ],
+    "left_clavicle": [
+      0.016893466711044313,
+      0.028735496997833253,
+      1.140110681951046
+    ],
+    "left_upper_arm": [
+      0.012988604307174682,
+      0.10385496139526368,
+      1.0959451088309289
+    ],
+    "left_forearm": [
+      0.008934563994407655,
+      0.24118341445922853,
+      0.9907812294363976
+    ],
+    "left_hand": [
+      0.013155217170715333,
+      0.3741029739379883,
+      0.8874664863944054
+    ],
+    "right_thigh": [
+      0.028252263069152832,
+      -0.05889710426330567,
+      0.7856009468436241
+    ],
+    "right_shin": [
+      0.028263175487518312,
+      -0.051919231414794924,
+      0.4175456795096397
+    ],
+    "right_foot": [
+      0.0009417090564966202,
+      -0.046044960021972656,
+      0.08638793796300889
+    ],
+    "left_thigh": [
+      0.028252263069152832,
+      0.05889710426330567,
+      0.7856009468436241
+    ],
+    "left_shin": [
+      0.028263175487518312,
+      0.051919231414794924,
+      0.4175456795096397
+    ],
+    "left_foot": [
+      0.0009417090564966202,
+      0.046044960021972656,
+      0.08638793796300889
+    ]
+  },
+  "joints_in_qpos_order": [
+    {
+      "name": "waist_roll",
+      "body": "waist",
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "waist_pitch",
+      "body": "waist",
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "name": "waist_yaw",
+      "body": "waist",
+      "axis": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "name": "neck_yaw",
+      "body": "neck",
+      "axis": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "name": "neck_pitch",
+      "body": "neck",
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "name": "right_shoulder_roll",
+      "body": "right_upper_arm",
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "right_shoulder_pitch",
+      "body": "right_upper_arm",
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "name": "right_shoulder_yaw",
+      "body": "right_upper_arm",
+      "axis": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "name": "right_elbow",
+      "body": "right_forearm",
+      "axis": [
+        0.0,
+        -0.6136921045265448,
+        0.7895454393774817
+      ]
+    },
+    {
+      "name": "right_wrist_pitch",
+      "body": "right_hand",
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "name": "right_wrist_roll",
+      "body": "right_hand",
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "left_shoulder_roll",
+      "body": "left_upper_arm",
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "left_shoulder_pitch",
+      "body": "left_upper_arm",
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "name": "left_shoulder_yaw",
+      "body": "left_upper_arm",
+      "axis": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "name": "left_elbow",
+      "body": "left_forearm",
+      "axis": [
+        0.0,
+        -0.6136921045265448,
+        -0.7895454393774817
+      ]
+    },
+    {
+      "name": "left_wrist_pitch",
+      "body": "left_hand",
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "name": "left_wrist_roll",
+      "body": "left_hand",
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "right_hip_roll",
+      "body": "right_thigh",
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "right_hip_pitch",
+      "body": "right_thigh",
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "name": "right_hip_yaw",
+      "body": "right_thigh",
+      "axis": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "name": "right_knee",
+      "body": "right_shin",
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "name": "right_ankle_pitch",
+      "body": "right_foot",
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "name": "right_ankle_roll",
+      "body": "right_foot",
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "left_hip_roll",
+      "body": "left_thigh",
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "name": "left_hip_pitch",
+      "body": "left_thigh",
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "name": "left_hip_yaw",
+      "body": "left_thigh",
+      "axis": [
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "name": "left_knee",
+      "body": "left_shin",
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "name": "left_ankle_pitch",
+      "body": "left_foot",
+      "axis": [
+        0.0,
+        1.0,
+        0.0
+      ]
+    },
+    {
+      "name": "left_ankle_roll",
+      "body": "left_foot",
+      "axis": [
+        1.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "visual_meshes": 38,
+  "visual_skins": 9,
+  "excluded_expression_faces": 442,
+  "degenerate_faces_removed": 0,
+  "placeholder_mass_per_body_kg": 1,
+  "placeholder_diagonal_inertia_kg_m2": [
+    0.01,
+    0.01,
+    0.01
+  ]
+}

@@ -1,0 +1,11 @@
+# Local Python environment and bytecode
+.venv/
+__pycache__/
+*.py[cod]
+
+# Native MuJoCo release: install locally as described in README.md
+.tools/
+
+# Viewer runtime output
+/MUJOCO_LOG.TXT
+/imgui.ini

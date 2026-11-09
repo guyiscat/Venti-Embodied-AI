@@ -1,0 +1,157 @@
+{
+  "merged_bodies": {
+    "chest": {
+      "into": "waist",
+      "translation_m": [
+        0.00136316776,
+        0.0,
+        0.137854156
+      ]
+    },
+    "head": {
+      "into": "neck",
+      "translation_m": [
+        0.012869122,
+        0.0,
+        0.0774298096
+      ]
+    },
+    "right_clavicle": {
+      "into": "waist",
+      "translation_m": [
+        -0.02591004014,
+        -0.028735497,
+        0.289207687
+      ]
+    },
+    "left_clavicle": {
+      "into": "waist",
+      "translation_m": [
+        -0.02591004014,
+        0.028735497,
+        0.289207687
+      ]
+    }
+  },
+  "palm_frames": {
+    "right": {
+      "long_axis": [
+        -0.04857825537681627,
+        -0.7221903675374558,
+        -0.6899863956199856
+      ],
+      "palmar_normal": [
+        0.10066874958617701,
+        0.6837442826257233,
+        -0.7227444630250659
+      ],
+      "width_axis": [
+        0.9937333424824291,
+        -0.10456973277554879,
+        0.03948689688934685
+      ]
+    },
+    "left": {
+      "long_axis": [
+        -0.04857872169946578,
+        0.722180712820177,
+        -0.6899964679826894
+      ],
+      "palmar_normal": [
+        0.10066941363974176,
+        -0.6837542742952669,
+        -0.722734917892019
+      ],
+      "width_axis": [
+        -0.9937332524150917,
+        -0.10457107828407285,
+        -0.039485600299727995
+      ]
+    }
+  },
+  "modeling_only": true,
+  "renamed_bodies_after_merging": {
+    "neck": "head"
+  },
+  "reference": "../Venti_MJCF/venti.xml",
+  "original_body_count": 19,
+  "notes": [
+    "PMX hand joint positions retained; hinge axes and limits are design choices.",
+    "All 29 original joint names retained; wrist axes corrected to palm frame.",
+    "Fixed base, zero gravity, robot self-contact disabled, no actuators.",
+    "Masses are nominal virtual-body estimates; inertias inferred from physical primitives."
+  ],
+  "joint_names_in_qpos_order": [
+    "waist_roll",
+    "waist_pitch",
+    "waist_yaw",
+    "neck_yaw",
+    "neck_pitch",
+    "right_shoulder_roll",
+    "right_shoulder_pitch",
+    "right_shoulder_yaw",
+    "right_elbow",
+    "right_wrist_pitch",
+    "right_wrist_roll",
+    "right_thumb_cmc_opposition",
+    "right_thumb_cmc_flex",
+    "right_thumb_mcp_flex",
+    "right_thumb_ip_flex",
+    "right_index_mcp_spread",
+    "right_index_mcp_flex",
+    "right_index_pip_flex",
+    "right_index_dip_flex",
+    "right_middle_mcp_spread",
+    "right_middle_mcp_flex",
+    "right_middle_pip_flex",
+    "right_middle_dip_flex",
+    "right_ring_mcp_spread",
+    "right_ring_mcp_flex",
+    "right_ring_pip_flex",
+    "right_ring_dip_flex",
+    "right_little_mcp_spread",
+    "right_little_mcp_flex",
+    "right_little_pip_flex",
+    "right_little_dip_flex",
+    "left_shoulder_roll",
+    "left_shoulder_pitch",
+    "left_shoulder_yaw",
+    "left_elbow",
+    "left_wrist_pitch",
+    "left_wrist_roll",
+    "left_thumb_cmc_opposition",
+    "left_thumb_cmc_flex",
+    "left_thumb_mcp_flex",
+    "left_thumb_ip_flex",
+    "left_index_mcp_spread",
+    "left_index_mcp_flex",
+    "left_index_pip_flex",
+    "left_index_dip_flex",
+    "left_middle_mcp_spread",
+    "left_middle_mcp_flex",
+    "left_middle_pip_flex",
+    "left_middle_dip_flex",
+    "left_ring_mcp_spread",
+    "left_ring_mcp_flex",
+    "left_ring_pip_flex",
+    "left_ring_dip_flex",
+    "left_little_mcp_spread",
+    "left_little_mcp_flex",
+    "left_little_pip_flex",
+    "left_little_dip_flex",
+    "right_hip_roll",
+    "right_hip_pitch",
+    "right_hip_yaw",
+    "right_knee",
+    "right_ankle_pitch",
+    "right_ankle_roll",
+    "left_hip_roll",
+    "left_hip_pitch",
+    "left_hip_yaw",
+    "left_knee",
+    "left_ankle_pitch",
+    "left_ankle_roll"
+  ],
+  "robot_body_count": 45,
+  "joint_count": 69
+}

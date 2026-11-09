@@ -1,0 +1,61 @@
+{
+  "mujoco_version": "3.17.0",
+  "nq": 29,
+  "nv": 29,
+  "robot_bodies": 19,
+  "geometry_count": 147,
+  "collision_proxy_count": 19,
+  "decorative_visual_count": 127,
+  "original_joints_bodies_inertias_unchanged": true,
+  "initial_contacts": [],
+  "rest_1000_steps_no_warning": true,
+  "max_rest_joint_drift_rad": 0.0,
+  "temporary_environment_probe_contacts": [
+    {
+      "geom1": "probe_ball",
+      "geom2": "head_collision"
+    }
+  ],
+  "temporary_1mm_floor_penetration_contacts": [
+    {
+      "geom1": "ground",
+      "geom2": "right_foot_collision"
+    },
+    {
+      "geom1": "ground",
+      "geom2": "right_foot_collision"
+    },
+    {
+      "geom1": "ground",
+      "geom2": "right_foot_collision"
+    },
+    {
+      "geom1": "ground",
+      "geom2": "right_foot_collision"
+    },
+    {
+      "geom1": "ground",
+      "geom2": "left_foot_collision"
+    },
+    {
+      "geom1": "ground",
+      "geom2": "left_foot_collision"
+    },
+    {
+      "geom1": "ground",
+      "geom2": "left_foot_collision"
+    },
+    {
+      "geom1": "ground",
+      "geom2": "left_foot_collision"
+    }
+  ],
+  "self_collision_enabled": false,
+  "gravity": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "fixed_base": true,
+  "limitation": "Original placeholder masses and inertias retained. No actuators or joint limits."
+}

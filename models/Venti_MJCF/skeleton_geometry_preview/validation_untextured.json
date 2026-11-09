@@ -1,0 +1,26 @@
+[
+  {
+    "file": "venti_skeleton_untextured.xml",
+    "nq": 29,
+    "nv": 29,
+    "ngeom": 147,
+    "ntex": 0,
+    "nmat": 0,
+    "physics_and_collision_geometry_preserved": true,
+    "steps": 1000,
+    "warnings": 0,
+    "max_rest_qpos": 0.0
+  },
+  {
+    "file": "venti_skeleton_plain.xml",
+    "nq": 29,
+    "nv": 29,
+    "ngeom": 20,
+    "ntex": 0,
+    "nmat": 0,
+    "physics_and_collision_geometry_preserved": true,
+    "steps": 1000,
+    "warnings": 0,
+    "max_rest_qpos": 0.0
+  }
+]

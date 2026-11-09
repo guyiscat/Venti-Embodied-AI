@@ -1,0 +1,299 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mujoco model="Venti_skeleton_geometry">
+  <!-- Stylized primitive Venti model. Existing 19 bodies / 29 joints retained. -->
+  <!-- Group 2: decorative visuals, no contact. Group 3: collision proxies, hidden by default. -->
+  <!-- Robot contact bits 1/2, environment bits 2/1: environment contacts enabled; robot self-contact disabled. -->
+  <!-- Fixed base, zero gravity, placeholder inertias retained. This is not a calibrated walking robot. -->
+  <compiler angle="degree" autolimits="true" inertiafromgeom="false" fusestatic="false" />
+  <option timestep="0.002" gravity="0 0 0" />
+  <statistic center="0 0 0.77" extent="1.8" />
+  <visual>
+    <global azimuth="155" elevation="-8" offwidth="1000" offheight="1000" />
+    <headlight ambient="0.45 0.45 0.45" diffuse="0.65 0.65 0.65" specular="0 0 0" />
+    <rgba haze="0.92 0.94 0.96 1" />
+    <quality shadowsize="2048" offsamples="4" numslices="32" numstacks="20" />
+  </visual>
+  <default>
+    <joint type="hinge" limited="false" damping="1" armature="0.01" />
+    <geom contype="0" conaffinity="0" density="0" group="2" />
+    <default class="visual">
+      <geom contype="0" conaffinity="0" density="0" group="2" />
+    </default>
+    <default class="collision">
+      <geom contype="1" conaffinity="2" density="0" group="3" rgba="0.2 0.65 0.95 0.35" friction="0.8 0.01 0.001" condim="3" margin="0" />
+    </default>
+    <default class="environment">
+      <geom contype="2" conaffinity="1" group="0" friction="0.9 0.01 0.001" />
+    </default>
+  </default>
+  <asset>
+    <texture name="sky" type="skybox" builtin="gradient" rgb1="0.82 0.87 0.92" rgb2="0.96 0.97 0.98" width="512" height="3072" />
+    <material name="ivory" rgba="0.94 0.91 0.80 1" specular="0.12" shininess=".18" />
+    <material name="white" rgba="0.98 0.97 0.92 1" specular="0.12" shininess=".18" />
+    <material name="green" rgba="0.035 0.29 0.23 1" specular="0.2" shininess=".18" />
+    <material name="green_light" rgba="0.08 0.43 0.34 1" specular="0.2" shininess=".18" />
+    <material name="green_dark" rgba="0.035 0.19 0.15 1" specular="0.15" shininess=".18" />
+    <material name="gold" rgba="0.79 0.62 0.29 1" specular="0.4" shininess=".18" />
+    <material name="skin" rgba="0.99 0.83 0.71 1" specular="0.1" shininess=".18" />
+    <material name="hair" rgba="0.035 0.055 0.12 1" specular="0.1" shininess=".18" />
+    <material name="teal" rgba="0.03 0.65 0.66 1" specular="0.4" shininess=".18" />
+    <material name="vest" rgba="0.15 0.10 0.085 1" specular="0.15" shininess=".18" />
+    <material name="shoe" rgba="0.12 0.085 0.065 1" specular="0.15" shininess=".18" />
+    <material name="sole" rgba="0.055 0.045 0.04 1" specular="0.1" shininess=".18" />
+    <material name="iris" rgba="0.05 0.62 0.48 1" specular="0.25" shininess=".18" />
+    <material name="black" rgba="0.015 0.018 0.025 1" specular="0.1" shininess=".18" />
+    <mesh name="cape_green_-1_0" vertex="-0.0775 0 0.127 -0.0721875 -0.03625 0.127 -0.11775 0 -0.06025 -0.1124375 -0.044125 -0.0571875 -0.158 0 -0.2475 -0.1526875 -0.052 -0.241375 -0.1925 0 -0.408 -0.1871875 -0.05875 -0.39925 -0.0745 0 0.127 -0.0691875 -0.03625 0.127 -0.11475 0 -0.06025 -0.1094375 -0.044125 -0.0571875 -0.155 0 -0.2475 -0.1496875 -0.052 -0.241375 -0.1895 0 -0.408 -0.1841875 -0.05875 -0.39925" face="0 2 1 1 2 3 8 9 10 9 11 10 2 4 3 3 4 5 10 11 12 11 13 12 4 6 5 5 6 7 12 13 14 13 15 14 0 1 8 1 9 8 1 3 9 3 11 9 3 5 11 5 13 11 5 7 13 7 15 13 7 6 15 6 14 15 6 4 14 4 12 14 4 2 12 2 10 12 2 0 10 0 8 10" inertia="shell" />
+    <mesh name="cape_lining_-1_0" vertex="-0.0725 0 0.127 -0.0671875 -0.03625 0.127 -0.11275 0 -0.06025 -0.1074375 -0.044125 -0.0571875 -0.153 0 -0.2475 -0.1476875 -0.052 -0.241375 -0.1875 0 -0.408 -0.1821875 -0.05875 -0.39925 -0.0715 0 0.127 -0.0661875 -0.03625 0.127 -0.11175 0 -0.06025 -0.1064375 -0.044125 -0.0571875 -0.152 0 -0.2475 -0.1466875 -0.052 -0.241375 -0.1865 0 -0.408 -0.1811875 -0.05875 -0.39925" face="0 2 1 1 2 3 8 9 10 9 11 10 2 4 3 3 4 5 10 11 12 11 13 12 4 6 5 5 6 7 12 13 14 13 15 14 0 1 8 1 9 8 1 3 9 3 11 9 3 5 11 5 13 11 5 7 13 7 15 13 7 6 15 6 14 15 6 4 14 4 12 14 4 2 12 2 10 12 2 0 10 0 8 10" inertia="shell" />
+    <mesh name="cape_green_-1_1" vertex="-0.0721875 -0.03625 0.127 -0.05625 -0.0725 0.127 -0.1124375 -0.044125 -0.0571875 -0.0965 -0.08825 -0.048 -0.1526875 -0.052 -0.241375 -0.13675 -0.104 -0.223 -0.1871875 -0.05875 -0.39925 -0.17125 -0.1175 -0.373 -0.0691875 -0.03625 0.127 -0.05325 -0.0725 0.127 -0.1094375 -0.044125 -0.0571875 -0.0935 -0.08825 -0.048 -0.1496875 -0.052 -0.241375 -0.13375 -0.104 -0.223 -0.1841875 -0.05875 -0.39925 -0.16825 -0.1175 -0.373" face="0 2 1 1 2 3 8 9 10 9 11 10 2 4 3 3 4 5 10 11 12 11 13 12 4 6 5 5 6 7 12 13 14 13 15 14 0 1 8 1 9 8 1 3 9 3 11 9 3 5 11 5 13 11 5 7 13 7 15 13 7 6 15 6 14 15 6 4 14 4 12 14 4 2 12 2 10 12 2 0 10 0 8 10" inertia="shell" />
+    <mesh name="cape_lining_-1_1" vertex="-0.0671875 -0.03625 0.127 -0.05125 -0.0725 0.127 -0.1074375 -0.044125 -0.0571875 -0.0915 -0.08825 -0.048 -0.1476875 -0.052 -0.241375 -0.13175 -0.104 -0.223 -0.1821875 -0.05875 -0.39925 -0.16625 -0.1175 -0.373 -0.0661875 -0.03625 0.127 -0.05025 -0.0725 0.127 -0.1064375 -0.044125 -0.0571875 -0.0905 -0.08825 -0.048 -0.1466875 -0.052 -0.241375 -0.13075 -0.104 -0.223 -0.1811875 -0.05875 -0.39925 -0.16525 -0.1175 -0.373" face="0 2 1 1 2 3 8 9 10 9 11 10 2 4 3 3 4 5 10 11 12 11 13 12 4 6 5 5 6 7 12 13 14 13 15 14 0 1 8 1 9 8 1 3 9 3 11 9 3 5 11 5 13 11 5 7 13 7 15 13 7 6 15 6 14 15 6 4 14 4 12 14 4 2 12 2 10 12 2 0 10 0 8 10" inertia="shell" />
+    <mesh name="cape_green_-1_2" vertex="-0.05625 -0.0725 0.127 -0.0296875 -0.10875 0.127 -0.0965 -0.08825 -0.048 -0.0699375 -0.132375 -0.0326875 -0.13675 -0.104 -0.223 -0.1101875 -0.156 -0.192375 -0.17125 -0.1175 -0.373 -0.1446875 -0.17625 -0.32925 -0.05325 -0.0725 0.127 -0.0266875 -0.10875 0.127 -0.0935 -0.08825 -0.048 -0.0669375 -0.132375 -0.0326875 -0.13375 -0.104 -0.223 -0.1071875 -0.156 -0.192375 -0.16825 -0.1175 -0.373 -0.1416875 -0.17625 -0.32925" face="0 2 1 1 2 3 8 9 10 9 11 10 2 4 3 3 4 5 10 11 12 11 13 12 4 6 5 5 6 7 12 13 14 13 15 14 0 1 8 1 9 8 1 3 9 3 11 9 3 5 11 5 13 11 5 7 13 7 15 13 7 6 15 6 14 15 6 4 14 4 12 14 4 2 12 2 10 12 2 0 10 0 8 10" inertia="shell" />
+    <mesh name="cape_lining_-1_2" vertex="-0.05125 -0.0725 0.127 -0.0246875 -0.10875 0.127 -0.0915 -0.08825 -0.048 -0.0649375 -0.132375 -0.0326875 -0.13175 -0.104 -0.223 -0.1051875 -0.156 -0.192375 -0.16625 -0.1175 -0.373 -0.1396875 -0.17625 -0.32925 -0.05025 -0.0725 0.127 -0.0236875 -0.10875 0.127 -0.0905 -0.08825 -0.048 -0.0639375 -0.132375 -0.0326875 -0.13075 -0.104 -0.223 -0.1041875 -0.156 -0.192375 -0.16525 -0.1175 -0.373 -0.1386875 -0.17625 -0.32925" face="0 2 1 1 2 3 8 9 10 9 11 10 2 4 3 3 4 5 10 11 12 11 13 12 4 6 5 5 6 7 12 13 14 13 15 14 0 1 8 1 9 8 1 3 9 3 11 9 3 5 11 5 13 11 5 7 13 7 15 13 7 6 15 6 14 15 6 4 14 4 12 14 4 2 12 2 10 12 2 0 10 0 8 10" inertia="shell" />
+    <mesh name="cape_green_-1_3" vertex="-0.0296875 -0.10875 0.127 0.0075 -0.145 0.127 -0.0699375 -0.132375 -0.0326875 -0.03275 -0.1765 -0.01125 -0.1101875 -0.156 -0.192375 -0.073 -0.208 -0.1495 -0.1446875 -0.17625 -0.32925 -0.1075 -0.235 -0.268 -0.0266875 -0.10875 0.127 0.0105 -0.145 0.127 -0.0669375 -0.132375 -0.0326875 -0.02975 -0.1765 -0.01125 -0.1071875 -0.156 -0.192375 -0.07 -0.208 -0.1495 -0.1416875 -0.17625 -0.32925 -0.1045 -0.235 -0.268" face="0 2 1 1 2 3 8 9 10 9 11 10 2 4 3 3 4 5 10 11 12 11 13 12 4 6 5 5 6 7 12 13 14 13 15 14 0 1 8 1 9 8 1 3 9 3 11 9 3 5 11 5 13 11 5 7 13 7 15 13 7 6 15 6 14 15 6 4 14 4 12 14 4 2 12 2 10 12 2 0 10 0 8 10" inertia="shell" />
+    <mesh name="cape_lining_-1_3" vertex="-0.0246875 -0.10875 0.127 0.0125 -0.145 0.127 -0.0649375 -0.132375 -0.0326875 -0.02775 -0.1765 -0.01125 -0.1051875 -0.156 -0.192375 -0.068 -0.208 -0.1495 -0.1396875 -0.17625 -0.32925 -0.1025 -0.235 -0.268 -0.0236875 -0.10875 0.127 0.0135 -0.145 0.127 -0.0639375 -0.132375 -0.0326875 -0.02675 -0.1765 -0.01125 -0.1041875 -0.156 -0.192375 -0.067 -0.208 -0.1495 -0.1386875 -0.17625 -0.32925 -0.1015 -0.235 -0.268" face="0 2 1 1 2 3 8 9 10 9 11 10 2 4 3 3 4 5 10 11 12 11 13 12 4 6 5 5 6 7 12 13 14 13 15 14 0 1 8 1 9 8 1 3 9 3 11 9 3 5 11 5 13 11 5 7 13 7 15 13 7 6 15 6 14 15 6 4 14 4 12 14 4 2 12 2 10 12 2 0 10 0 8 10" inertia="shell" />
+    <mesh name="cape_green_1_0" vertex="-0.0775 0 0.127 -0.0721875 0.03625 0.127 -0.11775 0 -0.06025 -0.1124375 0.044125 -0.0571875 -0.158 0 -0.2475 -0.1526875 0.052 -0.241375 -0.1925 0 -0.408 -0.1871875 0.05875 -0.39925 -0.0745 0 0.127 -0.0691875 0.03625 0.127 -0.11475 0 -0.06025 -0.1094375 0.044125 -0.0571875 -0.155 0 -0.2475 -0.1496875 0.052 -0.241375 -0.1895 0 -0.408 -0.1841875 0.05875 -0.39925" face="0 2 1 1 2 3 8 9 10 9 11 10 2 4 3 3 4 5 10 11 12 11 13 12 4 6 5 5 6 7 12 13 14 13 15 14 0 1 8 1 9 8 1 3 9 3 11 9 3 5 11 5 13 11 5 7 13 7 15 13 7 6 15 6 14 15 6 4 14 4 12 14 4 2 12 2 10 12 2 0 10 0 8 10" inertia="shell" />
+    <mesh name="cape_lining_1_0" vertex="-0.0725 0 0.127 -0.0671875 0.03625 0.127 -0.11275 0 -0.06025 -0.1074375 0.044125 -0.0571875 -0.153 0 -0.2475 -0.1476875 0.052 -0.241375 -0.1875 0 -0.408 -0.1821875 0.05875 -0.39925 -0.0715 0 0.127 -0.0661875 0.03625 0.127 -0.11175 0 -0.06025 -0.1064375 0.044125 -0.0571875 -0.152 0 -0.2475 -0.1466875 0.052 -0.241375 -0.1865 0 -0.408 -0.1811875 0.05875 -0.39925" face="0 2 1 1 2 3 8 9 10 9 11 10 2 4 3 3 4 5 10 11 12 11 13 12 4 6 5 5 6 7 12 13 14 13 15 14 0 1 8 1 9 8 1 3 9 3 11 9 3 5 11 5 13 11 5 7 13 7 15 13 7 6 15 6 14 15 6 4 14 4 12 14 4 2 12 2 10 12 2 0 10 0 8 10" inertia="shell" />
+    <mesh name="cape_green_1_1" vertex="-0.0721875 0.03625 0.127 -0.05625 0.0725 0.127 -0.1124375 0.044125 -0.0571875 -0.0965 0.08825 -0.048 -0.1526875 0.052 -0.241375 -0.13675 0.104 -0.223 -0.1871875 0.05875 -0.39925 -0.17125 0.1175 -0.373 -0.0691875 0.03625 0.127 -0.05325 0.0725 0.127 -0.1094375 0.044125 -0.0571875 -0.0935 0.08825 -0.048 -0.1496875 0.052 -0.241375 -0.13375 0.104 -0.223 -0.1841875 0.05875 -0.39925 -0.16825 0.1175 -0.373" face="0 2 1 1 2 3 8 9 10 9 11 10 2 4 3 3 4 5 10 11 12 11 13 12 4 6 5 5 6 7 12 13 14 13 15 14 0 1 8 1 9 8 1 3 9 3 11 9 3 5 11 5 13 11 5 7 13 7 15 13 7 6 15 6 14 15 6 4 14 4 12 14 4 2 12 2 10 12 2 0 10 0 8 10" inertia="shell" />
+    <mesh name="cape_lining_1_1" vertex="-0.0671875 0.03625 0.127 -0.05125 0.0725 0.127 -0.1074375 0.044125 -0.0571875 -0.0915 0.08825 -0.048 -0.1476875 0.052 -0.241375 -0.13175 0.104 -0.223 -0.1821875 0.05875 -0.39925 -0.16625 0.1175 -0.373 -0.0661875 0.03625 0.127 -0.05025 0.0725 0.127 -0.1064375 0.044125 -0.0571875 -0.0905 0.08825 -0.048 -0.1466875 0.052 -0.241375 -0.13075 0.104 -0.223 -0.1811875 0.05875 -0.39925 -0.16525 0.1175 -0.373" face="0 2 1 1 2 3 8 9 10 9 11 10 2 4 3 3 4 5 10 11 12 11 13 12 4 6 5 5 6 7 12 13 14 13 15 14 0 1 8 1 9 8 1 3 9 3 11 9 3 5 11 5 13 11 5 7 13 7 15 13 7 6 15 6 14 15 6 4 14 4 12 14 4 2 12 2 10 12 2 0 10 0 8 10" inertia="shell" />
+    <mesh name="cape_green_1_2" vertex="-0.05625 0.0725 0.127 -0.0296875 0.10875 0.127 -0.0965 0.08825 -0.048 -0.0699375 0.132375 -0.0326875 -0.13675 0.104 -0.223 -0.1101875 0.156 -0.192375 -0.17125 0.1175 -0.373 -0.1446875 0.17625 -0.32925 -0.05325 0.0725 0.127 -0.0266875 0.10875 0.127 -0.0935 0.08825 -0.048 -0.0669375 0.132375 -0.0326875 -0.13375 0.104 -0.223 -0.1071875 0.156 -0.192375 -0.16825 0.1175 -0.373 -0.1416875 0.17625 -0.32925" face="0 2 1 1 2 3 8 9 10 9 11 10 2 4 3 3 4 5 10 11 12 11 13 12 4 6 5 5 6 7 12 13 14 13 15 14 0 1 8 1 9 8 1 3 9 3 11 9 3 5 11 5 13 11 5 7 13 7 15 13 7 6 15 6 14 15 6 4 14 4 12 14 4 2 12 2 10 12 2 0 10 0 8 10" inertia="shell" />
+    <mesh name="cape_lining_1_2" vertex="-0.05125 0.0725 0.127 -0.0246875 0.10875 0.127 -0.0915 0.08825 -0.048 -0.0649375 0.132375 -0.0326875 -0.13175 0.104 -0.223 -0.1051875 0.156 -0.192375 -0.16625 0.1175 -0.373 -0.1396875 0.17625 -0.32925 -0.05025 0.0725 0.127 -0.0236875 0.10875 0.127 -0.0905 0.08825 -0.048 -0.0639375 0.132375 -0.0326875 -0.13075 0.104 -0.223 -0.1041875 0.156 -0.192375 -0.16525 0.1175 -0.373 -0.1386875 0.17625 -0.32925" face="0 2 1 1 2 3 8 9 10 9 11 10 2 4 3 3 4 5 10 11 12 11 13 12 4 6 5 5 6 7 12 13 14 13 15 14 0 1 8 1 9 8 1 3 9 3 11 9 3 5 11 5 13 11 5 7 13 7 15 13 7 6 15 6 14 15 6 4 14 4 12 14 4 2 12 2 10 12 2 0 10 0 8 10" inertia="shell" />
+    <mesh name="cape_green_1_3" vertex="-0.0296875 0.10875 0.127 0.0075 0.145 0.127 -0.0699375 0.132375 -0.0326875 -0.03275 0.1765 -0.01125 -0.1101875 0.156 -0.192375 -0.073 0.208 -0.1495 -0.1446875 0.17625 -0.32925 -0.1075 0.235 -0.268 -0.0266875 0.10875 0.127 0.0105 0.145 0.127 -0.0669375 0.132375 -0.0326875 -0.02975 0.1765 -0.01125 -0.1071875 0.156 -0.192375 -0.07 0.208 -0.1495 -0.1416875 0.17625 -0.32925 -0.1045 0.235 -0.268" face="0 2 1 1 2 3 8 9 10 9 11 10 2 4 3 3 4 5 10 11 12 11 13 12 4 6 5 5 6 7 12 13 14 13 15 14 0 1 8 1 9 8 1 3 9 3 11 9 3 5 11 5 13 11 5 7 13 7 15 13 7 6 15 6 14 15 6 4 14 4 12 14 4 2 12 2 10 12 2 0 10 0 8 10" inertia="shell" />
+    <mesh name="cape_lining_1_3" vertex="-0.0246875 0.10875 0.127 0.0125 0.145 0.127 -0.0649375 0.132375 -0.0326875 -0.02775 0.1765 -0.01125 -0.1051875 0.156 -0.192375 -0.068 0.208 -0.1495 -0.1396875 0.17625 -0.32925 -0.1025 0.235 -0.268 -0.0236875 0.10875 0.127 0.0135 0.145 0.127 -0.0639375 0.132375 -0.0326875 -0.02675 0.1765 -0.01125 -0.1041875 0.156 -0.192375 -0.067 0.208 -0.1495 -0.1386875 0.17625 -0.32925 -0.1015 0.235 -0.268" face="0 2 1 1 2 3 8 9 10 9 11 10 2 4 3 3 4 5 10 11 12 11 13 12 4 6 5 5 6 7 12 13 14 13 15 14 0 1 8 1 9 8 1 3 9 3 11 9 3 5 11 5 13 11 5 7 13 7 15 13 7 6 15 6 14 15 6 4 14 4 12 14 4 2 12 2 10 12 2 0 10 0 8 10" inertia="shell" />
+  </asset>
+  <worldbody>
+    <light name="key_light" pos="3 -3 4" dir="-3 3 -4" diffuse="0.55 0.55 0.55" />
+    <geom name="ground" type="plane" size="3 3 0.05" rgba="0.80 0.83 0.85 1" group="0" class="environment" contype="2" conaffinity="1" friction="0.9 0.01 0.001" />
+    <body name="pelvis" pos="0.0428028011 0 0.846776637">
+      <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01" />
+      <body name="waist" pos="7.05718994e-07 0 0.00412635803">
+        <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01" />
+        <joint name="waist_roll" axis="1 0 0" />
+        <joint name="waist_pitch" axis="0 1 0" />
+        <joint name="waist_yaw" axis="0 0 1" />
+        <body name="chest" pos="0.00136316776 0 0.137854156">
+          <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01" />
+          <body name="neck" pos="-0.0180730414 0 0.164969254">
+            <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01" />
+            <joint name="neck_yaw" axis="0 0 1" />
+            <joint name="neck_pitch" axis="0 1 0" />
+            <body name="head" pos="0.012869122 0 0.0774298096">
+              <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01" />
+              <geom name="head_face" type="ellipsoid" size="0.068 0.076 0.1" class="visual" material="skin" pos="0.025 0 0.061" />
+              <geom name="hair_back" type="ellipsoid" size="0.074 0.083 0.108" class="visual" material="hair" pos="-0.013 0 0.085" />
+              <geom name="ear_-1" type="ellipsoid" size="0.015 0.012 0.024" class="visual" material="skin" pos="0.015 -0.075 0.054" />
+              <geom name="eye_white_-1" type="ellipsoid" size="0.009 0.02 0.023" class="visual" material="white" pos="0.085 -0.031 0.067" />
+              <geom name="eye_iris_-1" type="ellipsoid" size="0.004 0.011 0.016" class="visual" material="iris" pos="0.093 -0.03 0.067" />
+              <geom name="eye_pupil_-1" type="ellipsoid" size="0.002 0.005 0.01" class="visual" material="black" pos="0.096 -0.03 0.067" />
+              <geom name="eye_glint_-1" type="sphere" size="0.0033" class="visual" material="white" pos="0.098 -0.027 0.074" />
+              <geom name="eyelid_-1" type="capsule" size="0.0025" class="visual" material="hair" fromto="0.088 -0.015 0.083 0.083 -0.046 0.085" />
+              <geom name="brow_-1" type="capsule" size="0.0022" class="visual" material="hair" fromto="0.078 -0.017 0.103 0.07 -0.044 0.109" />
+              <geom name="bang_outer_-1" type="ellipsoid" size="0.022 0.023 0.065" class="visual" material="hair" pos="0.048 -0.06 0.114" quat="0.98170204 0.0944765065 -0.165333886 0" />
+              <geom name="braid_-1_0" type="ellipsoid" size="0.014 0.014 0.026" class="visual" material="hair" pos="0.018 -0.078 0.024" quat="0.997000204 0.0594594952 -0.0495495794 0" />
+              <geom name="braid_-1_1" type="ellipsoid" size="0.014 0.014 0.026" class="visual" material="hair" pos="0.022 -0.08 -0.015" quat="0.997000204 0.0594594952 -0.0495495794 0" />
+              <geom name="braid_-1_2" type="ellipsoid" size="0.014 0.014 0.026" class="visual" material="teal" pos="0.026 -0.082 -0.054" quat="0.997000204 0.0594594952 -0.0495495794 0" />
+              <geom name="braid_tie_-1" type="capsule" size="0.004" class="visual" material="gold" fromto="0.02 -0.068 -0.04 0.02 -0.094 -0.04" />
+              <geom name="ear_1" type="ellipsoid" size="0.015 0.012 0.024" class="visual" material="skin" pos="0.015 0.075 0.054" />
+              <geom name="eye_white_1" type="ellipsoid" size="0.009 0.02 0.023" class="visual" material="white" pos="0.085 0.031 0.067" />
+              <geom name="eye_iris_1" type="ellipsoid" size="0.004 0.011 0.016" class="visual" material="iris" pos="0.093 0.03 0.067" />
+              <geom name="eye_pupil_1" type="ellipsoid" size="0.002 0.005 0.01" class="visual" material="black" pos="0.096 0.03 0.067" />
+              <geom name="eye_glint_1" type="sphere" size="0.0033" class="visual" material="white" pos="0.098 0.027 0.074" />
+              <geom name="eyelid_1" type="capsule" size="0.0025" class="visual" material="hair" fromto="0.088 0.015 0.083 0.083 0.046 0.085" />
+              <geom name="brow_1" type="capsule" size="0.0022" class="visual" material="hair" fromto="0.078 0.017 0.103 0.07 0.044 0.109" />
+              <geom name="bang_outer_1" type="ellipsoid" size="0.022 0.023 0.065" class="visual" material="hair" pos="0.048 0.06 0.114" quat="0.98170204 -0.0944765065 -0.165333886 0" />
+              <geom name="braid_1_0" type="ellipsoid" size="0.014 0.014 0.026" class="visual" material="hair" pos="0.018 0.078 0.024" quat="0.997000204 -0.0594594952 -0.0495495794 0" />
+              <geom name="braid_1_1" type="ellipsoid" size="0.014 0.014 0.026" class="visual" material="hair" pos="0.022 0.08 -0.015" quat="0.997000204 -0.0594594952 -0.0495495794 0" />
+              <geom name="braid_1_2" type="ellipsoid" size="0.014 0.014 0.026" class="visual" material="teal" pos="0.026 0.082 -0.054" quat="0.997000204 -0.0594594952 -0.0495495794 0" />
+              <geom name="braid_tie_1" type="capsule" size="0.004" class="visual" material="gold" fromto="0.02 0.068 -0.04 0.02 0.094 -0.04" />
+              <geom name="bang_center" type="ellipsoid" size="0.02 0.039 0.055" class="visual" material="hair" pos="0.06 -0.018 0.134" quat="0.963510735 0.177830063 -0.200058821 0" />
+              <geom name="nose" type="ellipsoid" size="0.009 0.009 0.012" class="visual" material="skin" pos="0.093 0 0.047" />
+              <geom name="mouth" type="capsule" size="0.0015" class="visual" material="vest" fromto="0.084 -0.01 0.02 0.084 0.01 0.02" />
+              <geom name="beret_band" type="ellipsoid" size="0.087 0.097 0.022" class="visual" material="ivory" pos="-0.005 0.008 0.164" quat="0.996855213 -0.0792444575 0 0" />
+              <geom name="beret_crown" type="ellipsoid" size="0.091 0.103 0.039" class="visual" material="green" pos="-0.02 0.016 0.183" quat="0.995133327 -0.098537618 0 0" />
+              <geom name="beret_trim" type="capsule" size="0.0035" class="visual" material="gold" fromto="0.05 -0.07 0.17 0.055 0.06 0.181" />
+              <geom name="feather_0" type="ellipsoid" size="0.004 0.013 0.036" class="visual" material="ivory" pos="-0.006 0.08 0.218" quat="0.965158978 -0.245910284 -0.0894219216 0" />
+              <geom name="feather_1" type="ellipsoid" size="0.004 0.013 0.036" class="visual" material="gold" pos="-0.006 0.092 0.237" quat="0.965158978 -0.245910284 -0.0894219216 0" />
+              <geom name="feather_2" type="ellipsoid" size="0.004 0.013 0.036" class="visual" material="ivory" pos="-0.006 0.104 0.256" quat="0.965158978 -0.245910284 -0.0894219216 0" />
+              <geom name="feather_stem" type="capsule" size="0.002" class="visual" material="gold" fromto="-0.003 0.073 0.186 -0.016 0.124 0.283" />
+              <geom name="flower_petal_0" type="ellipsoid" size="0.004 0.01 0.01" class="visual" material="white" pos="0.015 0.078 0.189" />
+              <geom name="flower_petal_1" type="ellipsoid" size="0.004 0.01 0.01" class="visual" material="white" pos="0.015 0.0894126782 0.180708204" />
+              <geom name="flower_petal_2" type="ellipsoid" size="0.004 0.01 0.01" class="visual" material="white" pos="0.015 0.085053423 0.167291796" />
+              <geom name="flower_petal_3" type="ellipsoid" size="0.004 0.01 0.01" class="visual" material="white" pos="0.015 0.070946577 0.167291796" />
+              <geom name="flower_petal_4" type="ellipsoid" size="0.004 0.01 0.01" class="visual" material="white" pos="0.015 0.0665873218 0.180708204" />
+              <geom name="flower_center" type="sphere" size="0.007" class="visual" material="gold" pos="0.021 0.078 0.177" />
+              <geom name="head_collision" type="ellipsoid" size="0.072 0.076 0.102" class="collision" pos="0.015 0 0.065" />
+            </body>
+            <geom name="neck_shape" type="capsule" size="0.023" class="visual" material="skin" fromto="0 0 0.005 0.012 0 0.067" />
+            <geom name="neck_collision" type="capsule" size="0.022" class="collision" fromto="0 0 0.008 0.011 0 0.061" />
+          </body>
+          <body name="right_clavicle" pos="-0.0272732079 -0.028735497 0.151353531">
+            <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01" />
+            <body name="right_upper_arm" pos="-0.0039048624 -0.0751194644 -0.0441655731">
+              <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01" />
+              <joint name="right_shoulder_roll" axis="1 0 0" />
+              <joint name="right_shoulder_pitch" axis="0 1 0" />
+              <joint name="right_shoulder_yaw" axis="0 0 1" />
+              <body name="right_forearm" pos="-0.00405404031 -0.137328453 -0.105163879">
+                <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01" />
+                <joint name="right_elbow" axis="0 -0.613692105 0.789545439" />
+                <body name="right_hand" pos="0.00422065318 -0.132919559 -0.103314743">
+                  <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01" />
+                  <joint name="right_wrist_pitch" axis="0 1 0" />
+                  <joint name="right_wrist_roll" axis="1 0 0" />
+                  <geom name="right_palm" type="ellipsoid" size="0.018 0.029 0.048" class="visual" material="skin" pos="0.00102757923 -0.0323611944 -0.0251534725" quat="0.439602474 0.89773997 0.0285063319 0" />
+                  <geom name="right_thumb" type="ellipsoid" size="0.012 0.014 0.027" class="visual" material="skin" pos="0.0155012582 -0.0157859485 -0.0122699866" quat="0.439602474 0.89773997 0.0285063319 0" />
+                  <geom name="right_hand_collision" type="ellipsoid" size="0.019 0.027 0.047" class="collision" pos="0.00087720178 -0.0276254098 -0.0214724766" quat="0.439602474 0.89773997 0.0285063319 0" />
+                </body>
+                <geom name="right_fore_sleeve" type="capsule" size="0.025" class="visual" material="white" fromto="0.000211032659 -0.00664597795 -0.00516573715 0.00350314214 -0.110323234 -0.0857512367" />
+                <geom name="right_cuff" type="ellipsoid" size="0.032 0.034 0.015" class="visual" material="ivory" pos="0.00388300093 -0.122285994 -0.0950495636" quat="0.439602474 0.89773997 0.0285063319 0" />
+                <geom name="right_forearm_collision" type="capsule" size="0.023" class="collision" fromto="0.000551383976 -0.0173645433 -0.0134969853 0.00376952084 -0.118712205 -0.0922717551" />
+              </body>
+              <geom name="right_puff_sleeve" type="ellipsoid" size="0.047 0.052 0.073" class="visual" material="ivory" pos="-0.00141891411 -0.0480649585 -0.0368073576" quat="0.442818831 0.896220678 -0.0264571156 0" />
+              <geom name="right_upper_sleeve" type="capsule" size="0.031" class="visual" material="white" fromto="-0.00162161612 -0.0549313812 -0.0420655516 -0.0039729595 -0.134581884 -0.103060601" />
+              <geom name="right_upper_arm_collision" type="capsule" size="0.03" class="collision" fromto="-0.00058578545 -0.0198431696 -0.0151955742 -0.00353854911 -0.119866464 -0.0917917737" />
+            </body>
+            <geom name="right_shoulder_join" type="capsule" size="0.033" class="visual" material="green" fromto="0 0 0 -0.0039048624 -0.0751194644 -0.0441655731" />
+          </body>
+          <body name="left_clavicle" pos="-0.0272732079 0.028735497 0.151353531">
+            <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01" />
+            <body name="left_upper_arm" pos="-0.0039048624 0.0751194644 -0.0441655731">
+              <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01" />
+              <joint name="left_shoulder_roll" axis="1 0 0" />
+              <joint name="left_shoulder_pitch" axis="0 1 0" />
+              <joint name="left_shoulder_yaw" axis="0 0 1" />
+              <body name="left_forearm" pos="-0.00405404031 0.137328453 -0.105163879">
+                <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01" />
+                <joint name="left_elbow" axis="0 -0.613692105 -0.789545439" />
+                <body name="left_hand" pos="0.00422065318 0.132919559 -0.103314743">
+                  <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01" />
+                  <joint name="left_wrist_pitch" axis="0 1 0" />
+                  <joint name="left_wrist_roll" axis="1 0 0" />
+                  <geom name="left_palm" type="ellipsoid" size="0.018 0.029 0.048" class="visual" material="skin" pos="0.00102757923 0.0323611944 -0.0251534725" quat="0.439602474 -0.89773997 0.0285063319 0" />
+                  <geom name="left_thumb" type="ellipsoid" size="0.012 0.014 0.027" class="visual" material="skin" pos="0.0155012582 0.0157859485 -0.0122699866" quat="0.439602474 -0.89773997 0.0285063319 0" />
+                  <geom name="left_hand_collision" type="ellipsoid" size="0.019 0.027 0.047" class="collision" pos="0.00087720178 0.0276254098 -0.0214724766" quat="0.439602474 -0.89773997 0.0285063319 0" />
+                </body>
+                <geom name="left_fore_sleeve" type="capsule" size="0.025" class="visual" material="white" fromto="0.000211032659 0.00664597795 -0.00516573715 0.00350314214 0.110323234 -0.0857512367" />
+                <geom name="left_cuff" type="ellipsoid" size="0.032 0.034 0.015" class="visual" material="ivory" pos="0.00388300093 0.122285994 -0.0950495636" quat="0.439602474 -0.89773997 0.0285063319 0" />
+                <geom name="left_forearm_collision" type="capsule" size="0.023" class="collision" fromto="0.000551383976 0.0173645433 -0.0134969853 0.00376952084 0.118712205 -0.0922717551" />
+              </body>
+              <geom name="left_puff_sleeve" type="ellipsoid" size="0.047 0.052 0.073" class="visual" material="ivory" pos="-0.00141891411 0.0480649585 -0.0368073576" quat="0.442818831 -0.896220678 -0.0264571156 0" />
+              <geom name="left_upper_sleeve" type="capsule" size="0.031" class="visual" material="white" fromto="-0.00162161612 0.0549313812 -0.0420655516 -0.0039729595 0.134581884 -0.103060601" />
+              <geom name="left_upper_arm_collision" type="capsule" size="0.03" class="collision" fromto="-0.00058578545 0.0198431696 -0.0151955742 -0.00353854911 0.119866464 -0.0917917737" />
+            </body>
+            <geom name="left_shoulder_join" type="capsule" size="0.033" class="visual" material="green" fromto="0 0 0 -0.0039048624 0.0751194644 -0.0441655731" />
+          </body>
+          <geom name="chest_blouse" type="ellipsoid" size="0.063 0.1 0.111" class="visual" material="ivory" pos="-0.008 0 0.08" />
+          <geom name="vest_front" type="ellipsoid" size="0.043 0.079 0.11" class="visual" material="vest" pos="0.035 0 0.027" />
+          <geom name="vest_button_0" type="sphere" size="0.004" class="visual" material="gold" pos="0.077 0 -0.025" />
+          <geom name="vest_button_1" type="sphere" size="0.004" class="visual" material="gold" pos="0.077 0 0.015" />
+          <geom name="vest_button_2" type="sphere" size="0.004" class="visual" material="gold" pos="0.077 0 0.055" />
+          <geom name="vest_button_3" type="sphere" size="0.004" class="visual" material="gold" pos="0.077 0 0.095" />
+          <geom name="collar_left" type="ellipsoid" size="0.022 0.034 0.018" class="visual" material="white" pos="0.043 0.025 0.133" quat="0.973248989 0.183802336 0.137851752 0" />
+          <geom name="collar_right" type="ellipsoid" size="0.022 0.034 0.018" class="visual" material="white" pos="0.043 -0.025 0.133" quat="0.973248989 -0.183802336 0.137851752 0" />
+          <geom name="bow_-1" type="ellipsoid" size="0.012 0.028 0.014" class="visual" material="green_dark" pos="0.064 -0.026 0.119" quat="0.981956387 0.189107521 0 0" />
+          <geom name="bow_1" type="ellipsoid" size="0.012 0.028 0.014" class="visual" material="green_dark" pos="0.064 0.026 0.119" quat="0.981956387 -0.189107521 0 0" />
+          <geom name="pendant_rim" type="ellipsoid" size="0.009 0.015 0.023" class="visual" material="gold" pos="0.08 0 0.075" />
+          <geom name="pendant_gem" type="ellipsoid" size="0.006 0.01 0.017" class="visual" material="teal" pos="0.089 0 0.075" />
+          <geom name="cape_green_-1_0" type="mesh" mesh="cape_green_-1_0" material="green" class="visual" />
+          <geom name="cape_lining_-1_0" type="mesh" mesh="cape_lining_-1_0" material="ivory" class="visual" />
+          <geom name="cape_hem_-1_0" type="capsule" size="0.004" class="visual" material="gold" fromto="-0.191 -0 -0.408 -0.1856875 -0.05875 -0.39925" />
+          <geom name="cape_green_-1_1" type="mesh" mesh="cape_green_-1_1" material="green" class="visual" />
+          <geom name="cape_lining_-1_1" type="mesh" mesh="cape_lining_-1_1" material="ivory" class="visual" />
+          <geom name="cape_hem_-1_1" type="capsule" size="0.004" class="visual" material="gold" fromto="-0.1856875 -0.05875 -0.39925 -0.16975 -0.1175 -0.373" />
+          <geom name="cape_green_-1_2" type="mesh" mesh="cape_green_-1_2" material="green" class="visual" />
+          <geom name="cape_lining_-1_2" type="mesh" mesh="cape_lining_-1_2" material="ivory" class="visual" />
+          <geom name="cape_hem_-1_2" type="capsule" size="0.004" class="visual" material="gold" fromto="-0.16975 -0.1175 -0.373 -0.1431875 -0.17625 -0.32925" />
+          <geom name="cape_green_-1_3" type="mesh" mesh="cape_green_-1_3" material="green" class="visual" />
+          <geom name="cape_lining_-1_3" type="mesh" mesh="cape_lining_-1_3" material="ivory" class="visual" />
+          <geom name="cape_hem_-1_3" type="capsule" size="0.004" class="visual" material="gold" fromto="-0.1431875 -0.17625 -0.32925 -0.106 -0.235 -0.268" />
+          <geom name="cape_edge_-1_0" type="capsule" size="0.004" class="visual" material="gold" fromto="0.009 -0.145 0.127 -0.03125 -0.1765 -0.01125" />
+          <geom name="cape_edge_-1_1" type="capsule" size="0.004" class="visual" material="gold" fromto="-0.03125 -0.1765 -0.01125 -0.0715 -0.208 -0.1495" />
+          <geom name="cape_edge_-1_2" type="capsule" size="0.004" class="visual" material="gold" fromto="-0.0715 -0.208 -0.1495 -0.106 -0.235 -0.268" />
+          <geom name="shoulder_mantle_-1" type="ellipsoid" size="0.073 0.067 0.024" class="visual" material="green" pos="-0.008 -0.089 0.13" />
+          <geom name="mantle_trim_-1" type="ellipsoid" size="0.065 0.038 0.009" class="visual" material="gold" pos="0.007 -0.118 0.116" />
+          <geom name="cape_green_1_0" type="mesh" mesh="cape_green_1_0" material="green" class="visual" />
+          <geom name="cape_lining_1_0" type="mesh" mesh="cape_lining_1_0" material="ivory" class="visual" />
+          <geom name="cape_hem_1_0" type="capsule" size="0.004" class="visual" material="gold" fromto="-0.191 0 -0.408 -0.1856875 0.05875 -0.39925" />
+          <geom name="cape_green_1_1" type="mesh" mesh="cape_green_1_1" material="green" class="visual" />
+          <geom name="cape_lining_1_1" type="mesh" mesh="cape_lining_1_1" material="ivory" class="visual" />
+          <geom name="cape_hem_1_1" type="capsule" size="0.004" class="visual" material="gold" fromto="-0.1856875 0.05875 -0.39925 -0.16975 0.1175 -0.373" />
+          <geom name="cape_green_1_2" type="mesh" mesh="cape_green_1_2" material="green" class="visual" />
+          <geom name="cape_lining_1_2" type="mesh" mesh="cape_lining_1_2" material="ivory" class="visual" />
+          <geom name="cape_hem_1_2" type="capsule" size="0.004" class="visual" material="gold" fromto="-0.16975 0.1175 -0.373 -0.1431875 0.17625 -0.32925" />
+          <geom name="cape_green_1_3" type="mesh" mesh="cape_green_1_3" material="green" class="visual" />
+          <geom name="cape_lining_1_3" type="mesh" mesh="cape_lining_1_3" material="ivory" class="visual" />
+          <geom name="cape_hem_1_3" type="capsule" size="0.004" class="visual" material="gold" fromto="-0.1431875 0.17625 -0.32925 -0.106 0.235 -0.268" />
+          <geom name="cape_edge_1_0" type="capsule" size="0.004" class="visual" material="gold" fromto="0.009 0.145 0.127 -0.03125 0.1765 -0.01125" />
+          <geom name="cape_edge_1_1" type="capsule" size="0.004" class="visual" material="gold" fromto="-0.03125 0.1765 -0.01125 -0.0715 0.208 -0.1495" />
+          <geom name="cape_edge_1_2" type="capsule" size="0.004" class="visual" material="gold" fromto="-0.0715 0.208 -0.1495 -0.106 0.235 -0.268" />
+          <geom name="shoulder_mantle_1" type="ellipsoid" size="0.073 0.067 0.024" class="visual" material="green" pos="-0.008 0.089 0.13" />
+          <geom name="mantle_trim_1" type="ellipsoid" size="0.065 0.038 0.009" class="visual" material="gold" pos="0.007 0.118 0.116" />
+          <geom name="chest_collision" type="ellipsoid" size="0.064 0.092 0.102" class="collision" pos="-0.007 0 0.073" />
+        </body>
+        <geom name="waist_vest" type="ellipsoid" size="0.061 0.083 0.095" class="visual" material="vest" pos="0 0 0.064" />
+        <geom name="waist_collision" type="capsule" size="0.057" class="collision" fromto="0 0 0.016 0 0 0.095" />
+      </body>
+      <body name="right_thigh" pos="-0.0145505381 -0.0588971043 -0.0611756897">
+        <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01" />
+        <joint name="right_hip_roll" axis="1 0 0" />
+        <joint name="right_hip_pitch" axis="0 1 0" />
+        <joint name="right_hip_yaw" axis="0 0 1" />
+        <body name="right_shin" pos="1.09124184e-05 0.00697787285 -0.368055267">
+          <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01" />
+          <joint name="right_knee" axis="0 1 0" />
+          <body name="right_foot" pos="-0.0273214664 0.00587427139 -0.331157742">
+            <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01" />
+            <joint name="right_ankle_pitch" axis="0 1 0" />
+            <joint name="right_ankle_roll" axis="1 0 0" />
+            <geom name="right_shoe_upper" type="ellipsoid" size="0.091 0.037 0.047" class="visual" material="shoe" pos="0.033 0 -0.034" />
+            <geom name="right_shoe_toe" type="ellipsoid" size="0.036 0.038 0.03" class="visual" material="shoe" pos="0.096 0 -0.046" />
+            <geom name="right_sole" type="box" size="0.09 0.036 0.019" class="visual" material="sole" pos="0.04 0 -0.0673879383" />
+            <geom name="right_shoe_trim" type="ellipsoid" size="0.01 0.036 0.006" class="visual" material="gold" pos="0.048 0 -0.009" />
+            <geom name="right_shoe_gem" type="sphere" size="0.006" class="visual" material="green_light" pos="0.051 0 -0.001" />
+            <geom name="right_foot_collision" type="box" size="0.09 0.036 0.022" class="collision" pos="0.04 0 -0.0643879383" friction="1.0 0.01 0.001" />
+            <geom name="right_ankle_collision" type="ellipsoid" size="0.028 0.029 0.033" class="collision" pos="0 0 -0.014" />
+          </body>
+          <geom name="right_stocking_shin" type="capsule" size="0.0275" class="visual" material="white" fromto="0 0 0 -0.0256821784 0.00552181511 -0.311288277" />
+          <geom name="right_calf" type="ellipsoid" size="0.03 0.032 0.094" class="visual" material="white" pos="-0.00819643992 0.00176228142 -0.0993473226" quat="0.0420819766 -0.210015844 -0.976791919 0" />
+          <geom name="right_shin_collision" type="capsule" size="0.028" class="collision" fromto="-0.00221968807 0.000477245619 -0.0269043718 -0.0252661997 0.0054323773 -0.306246287" />
+        </body>
+        <geom name="right_stocking_thigh" type="capsule" size="0.035" class="visual" material="white" fromto="2.6679178e-06 0.00170598217 -0.0899838298 1.09124184e-05 0.00697787285 -0.368055267" />
+        <geom name="right_shorts_puff" type="ellipsoid" size="0.052 0.053 0.093" class="visual" material="green_light" pos="2.0733595e-06 0.00132579584 -0.0699305007" quat="0.00947811605 -0.999953859 0.00156378815 0" />
+        <geom name="right_shorts_hem" type="ellipsoid" size="0.045 0.046 0.018" class="visual" material="gold" pos="4.36496736e-06 0.00279114914 -0.147222107" quat="0.00947811605 -0.999953859 0.00156378815 0" />
+        <geom name="right_thigh_collision" type="capsule" size="0.037" class="collision" fromto="1.18574125e-06 0.000758214297 -0.0399928132 1.01713301e-05 0.00650398891 -0.343059759" />
+      </body>
+      <body name="left_thigh" pos="-0.0145505381 0.0588971043 -0.0611756897">
+        <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01" />
+        <joint name="left_hip_roll" axis="1 0 0" />
+        <joint name="left_hip_pitch" axis="0 1 0" />
+        <joint name="left_hip_yaw" axis="0 0 1" />
+        <body name="left_shin" pos="1.09124184e-05 -0.00697787285 -0.368055267">
+          <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01" />
+          <joint name="left_knee" axis="0 1 0" />
+          <body name="left_foot" pos="-0.0273214664 -0.00587427139 -0.331157742">
+            <inertial pos="0 0 0" mass="1" diaginertia="0.01 0.01 0.01" />
+            <joint name="left_ankle_pitch" axis="0 1 0" />
+            <joint name="left_ankle_roll" axis="1 0 0" />
+            <geom name="left_shoe_upper" type="ellipsoid" size="0.091 0.037 0.047" class="visual" material="shoe" pos="0.033 0 -0.034" />
+            <geom name="left_shoe_toe" type="ellipsoid" size="0.036 0.038 0.03" class="visual" material="shoe" pos="0.096 0 -0.046" />
+            <geom name="left_sole" type="box" size="0.09 0.036 0.019" class="visual" material="sole" pos="0.04 0 -0.0673879383" />
+            <geom name="left_shoe_trim" type="ellipsoid" size="0.01 0.036 0.006" class="visual" material="gold" pos="0.048 0 -0.009" />
+            <geom name="left_shoe_gem" type="sphere" size="0.006" class="visual" material="green_light" pos="0.051 0 -0.001" />
+            <geom name="left_foot_collision" type="box" size="0.09 0.036 0.022" class="collision" pos="0.04 0 -0.0643879383" friction="1.0 0.01 0.001" />
+            <geom name="left_ankle_collision" type="ellipsoid" size="0.028 0.029 0.033" class="collision" pos="0 0 -0.014" />
+          </body>
+          <geom name="left_stocking_shin" type="capsule" size="0.0275" class="visual" material="white" fromto="0 0 0 -0.0256821784 -0.00552181511 -0.311288277" />
+          <geom name="left_calf" type="ellipsoid" size="0.03 0.032 0.094" class="visual" material="white" pos="-0.00819643992 -0.00176228142 -0.0993473226" quat="0.0420819766 0.210015844 -0.976791919 0" />
+          <geom name="left_shin_collision" type="capsule" size="0.028" class="collision" fromto="-0.00221968807 -0.000477245619 -0.0269043718 -0.0252661997 -0.0054323773 -0.306246287" />
+        </body>
+        <geom name="left_stocking_thigh" type="capsule" size="0.035" class="visual" material="white" fromto="2.6679178e-06 -0.00170598217 -0.0899838298 1.09124184e-05 -0.00697787285 -0.368055267" />
+        <geom name="left_shorts_puff" type="ellipsoid" size="0.052 0.053 0.093" class="visual" material="green_light" pos="2.0733595e-06 -0.00132579584 -0.0699305007" quat="0.00947811605 0.999953859 0.00156378815 0" />
+        <geom name="left_shorts_hem" type="ellipsoid" size="0.045 0.046 0.018" class="visual" material="gold" pos="4.36496736e-06 -0.00279114914 -0.147222107" quat="0.00947811605 0.999953859 0.00156378815 0" />
+        <geom name="left_thigh_collision" type="capsule" size="0.037" class="collision" fromto="1.18574125e-06 -0.000758214297 -0.0399928132 1.01713301e-05 -0.00650398891 -0.343059759" />
+      </body>
+      <geom name="pelvis_shell" type="ellipsoid" size="0.064 0.101 0.063" class="visual" material="green_dark" pos="0 0 -0.028" />
+      <geom name="belt" type="ellipsoid" size="0.066 0.099 0.013" class="visual" material="gold" pos="0.004 0 0.008" />
+      <geom name="belt_buckle" type="box" size="0.006 0.014 0.018" class="visual" material="gold" pos="0.071 0 0.009" />
+      <geom name="pelvis_collision" type="ellipsoid" size="0.061 0.096 0.06" class="collision" pos="0 0 -0.025" />
+    </body>
+    <camera name="front" pos="2.8 -1.0 1.20" xyaxes="0.336336 0.941742 0 -0.14270 0.05096 0.98845" fovy="36" />
+  </worldbody>
+</mujoco>

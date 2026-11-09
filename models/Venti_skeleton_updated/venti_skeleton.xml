@@ -1,0 +1,382 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mujoco model="Venti_modeling_color">
+  <!-- Modeling stage: fixed pelvis, zero gravity, no actuators. Nominal virtual masses; not hardware calibration. -->
+  <!-- Group 1: physical envelopes. Group 2: optional cosmetics. Group 4 sites: palm centers and fingertips. -->
+  <compiler angle="degree" autolimits="true" inertiafromgeom="true" fusestatic="false" inertiagrouprange="3 3" />
+  <option timestep="0.002" gravity="0 0 0" />
+  <statistic center="0 0 0.77" extent="1.8" />
+  <visual>
+    <global azimuth="155" elevation="-8" offwidth="1000" offheight="1000" />
+    <headlight ambient="0.45 0.45 0.45" diffuse="0.65 0.65 0.65" specular="0 0 0" />
+    <rgba haze="0.92 0.94 0.96 1" />
+    <quality shadowsize="2048" offsamples="4" numslices="32" numstacks="20" />
+  </visual>
+  <default>
+    <joint type="hinge" limited="true" damping="1" armature="0.01" />
+    <geom contype="0" conaffinity="0" density="0" group="2" />
+    <default class="visual">
+      <geom contype="0" conaffinity="0" density="0" group="2" />
+    </default>
+    <default class="collision">
+      <geom contype="1" conaffinity="2" density="0" group="3" friction="0.8 0.01 0.001" condim="3" margin="0" rgba="0.2 0.65 0.95 0.35" />
+    </default>
+    <default class="environment">
+      <geom contype="2" conaffinity="1" group="0" friction="0.9 0.01 0.001" rgba="0.82 0.84 0.86 1" />
+    </default>
+    <default class="finger">
+      <joint damping=".005" armature=".00001" frictionloss=".0002" limited="true" />
+    </default>
+  </default>
+  <asset>
+    <material name="ivory" rgba="0.94 0.91 0.80 1" specular="0.12" shininess=".18" />
+    <material name="white" rgba="0.98 0.97 0.92 1" specular="0.12" shininess=".18" />
+    <material name="green" rgba="0.035 0.29 0.23 1" specular="0.2" shininess=".18" />
+    <material name="green_light" rgba="0.08 0.43 0.34 1" specular="0.2" shininess=".18" />
+    <material name="green_dark" rgba="0.035 0.19 0.15 1" specular="0.15" shininess=".18" />
+    <material name="gold" rgba="0.79 0.62 0.29 1" specular="0.4" shininess=".18" />
+    <material name="skin" rgba="0.99 0.83 0.71 1" specular="0.1" shininess=".18" />
+    <material name="hair" rgba="0.035 0.055 0.12 1" specular="0.1" shininess=".18" />
+    <material name="teal" rgba="0.03 0.65 0.66 1" specular="0.4" shininess=".18" />
+    <material name="vest" rgba="0.15 0.10 0.085 1" specular="0.15" shininess=".18" />
+    <material name="shoe" rgba="0.12 0.085 0.065 1" specular="0.15" shininess=".18" />
+    <material name="sole" rgba="0.055 0.045 0.04 1" specular="0.1" shininess=".18" />
+    <material name="iris" rgba="0.05 0.62 0.48 1" specular="0.25" shininess=".18" />
+    <material name="black" rgba="0.015 0.018 0.025 1" specular="0.1" shininess=".18" />
+  </asset>
+  <worldbody>
+    <light name="key_light" pos="3 -3 4" dir="-3 3 -4" diffuse="0.55 0.55 0.55" />
+    <geom name="ground" type="plane" size="3 3 0.05" group="0" class="environment" contype="2" conaffinity="1" friction="0.9 0.01 0.001" />
+    <body name="pelvis" pos="0.0428028011 0 0.846776637">
+      <body name="waist" pos="7.05718994e-07 0 0.00412635803">
+        <joint name="waist_roll" axis="1 0 0" range="-25 25" />
+        <joint name="waist_pitch" axis="0 1 0" range="-35 40" />
+        <joint name="waist_yaw" axis="0 0 1" range="-60 60" />
+        <geom name="waist_collision" type="capsule" size="0.057" class="collision" fromto="0 0 0.016 0 0 0.095" mass="2" />
+        <site name="chest_reference" pos="0.00136316776 0 0.137854156" size=".002" group="4" rgba="0.7 0.3 0.8 1" />
+        <body name="head" pos="-0.01670987364 0 0.30282341">
+          <joint name="neck_yaw" axis="0 0 1" range="-70 70" />
+          <joint name="neck_pitch" axis="0 1 0" range="-40 40" />
+          <geom name="neck_collision" type="capsule" size="0.022" class="collision" fromto="0 0 0.008 0.011 0 0.061" mass="0.15" />
+          <site name="head_reference" pos="0.012869122 0 0.0774298096" size=".002" group="4" rgba="0.7 0.3 0.8 1" />
+          <geom name="head_collision" type="ellipsoid" size="0.072 0.076 0.102" class="collision" pos="0.027869122 0 0.1424298096" mass="2.5" />
+          <geom name="neck_visual" type="capsule" size="0.022" class="visual" fromto="0 0 0.008 0.011 0 0.061" mass="0" material="skin" />
+          <geom name="head_visual" type="ellipsoid" size="0.072 0.076 0.102" class="visual" pos="0.027869122 0 0.1424298096" mass="0" material="skin" />
+          <geom name="hair_back" type="ellipsoid" size="0.074 0.083 0.108" class="visual" material="hair" pos="-0.000130878 0 0.1624298096" />
+          <geom name="eye_white_-1" type="ellipsoid" size="0.009 0.02 0.023" class="visual" material="white" pos="0.097869122 -0.031 0.1444298096" />
+          <geom name="eye_iris_-1" type="ellipsoid" size="0.004 0.011 0.016" class="visual" material="iris" pos="0.105869122 -0.03 0.1444298096" />
+          <geom name="eye_pupil_-1" type="ellipsoid" size="0.002 0.005 0.01" class="visual" material="black" pos="0.108869122 -0.03 0.1444298096" />
+          <geom name="braid_-1_0" type="ellipsoid" size="0.014 0.014 0.026" class="visual" material="hair" pos="0.030869122 -0.078 0.1014298096" quat="0.997000204 0.0594594952 -0.0495495794 0" />
+          <geom name="braid_-1_1" type="ellipsoid" size="0.014 0.014 0.026" class="visual" material="hair" pos="0.034869122 -0.08 0.0624298096" quat="0.997000204 0.0594594952 -0.0495495794 0" />
+          <geom name="braid_-1_2" type="ellipsoid" size="0.014 0.014 0.026" class="visual" material="teal" pos="0.038869122 -0.082 0.0234298096" quat="0.997000204 0.0594594952 -0.0495495794 0" />
+          <geom name="braid_tie_-1" type="capsule" size="0.004" class="visual" material="gold" fromto="0.032869122 -0.068 0.0374298096 0.032869122 -0.094 0.0374298096" />
+          <geom name="eye_white_1" type="ellipsoid" size="0.009 0.02 0.023" class="visual" material="white" pos="0.097869122 0.031 0.1444298096" />
+          <geom name="eye_iris_1" type="ellipsoid" size="0.004 0.011 0.016" class="visual" material="iris" pos="0.105869122 0.03 0.1444298096" />
+          <geom name="eye_pupil_1" type="ellipsoid" size="0.002 0.005 0.01" class="visual" material="black" pos="0.108869122 0.03 0.1444298096" />
+          <geom name="braid_1_0" type="ellipsoid" size="0.014 0.014 0.026" class="visual" material="hair" pos="0.030869122 0.078 0.1014298096" quat="0.997000204 -0.0594594952 -0.0495495794 0" />
+          <geom name="braid_1_1" type="ellipsoid" size="0.014 0.014 0.026" class="visual" material="hair" pos="0.034869122 0.08 0.0624298096" quat="0.997000204 -0.0594594952 -0.0495495794 0" />
+          <geom name="braid_1_2" type="ellipsoid" size="0.014 0.014 0.026" class="visual" material="teal" pos="0.038869122 0.082 0.0234298096" quat="0.997000204 -0.0594594952 -0.0495495794 0" />
+          <geom name="braid_tie_1" type="capsule" size="0.004" class="visual" material="gold" fromto="0.032869122 0.068 0.0374298096 0.032869122 0.094 0.0374298096" />
+          <geom name="beret_band" type="ellipsoid" size="0.087 0.097 0.022" class="visual" material="ivory" pos="0.007869122 0.008 0.2414298096" quat="0.996855213 -0.0792444575 0 0" />
+          <geom name="beret_crown" type="ellipsoid" size="0.091 0.103 0.039" class="visual" material="green" pos="-0.007130878 0.016 0.2604298096" quat="0.995133327 -0.098537618 0 0" />
+          <geom name="feather_0" type="ellipsoid" size="0.004 0.013 0.036" class="visual" material="ivory" pos="0.006869122 0.08 0.2954298096" quat="0.965158978 -0.245910284 -0.0894219216 0" />
+          <geom name="feather_1" type="ellipsoid" size="0.004 0.013 0.036" class="visual" material="gold" pos="0.006869122 0.092 0.3144298096" quat="0.965158978 -0.245910284 -0.0894219216 0" />
+          <geom name="feather_2" type="ellipsoid" size="0.004 0.013 0.036" class="visual" material="ivory" pos="0.006869122 0.104 0.3334298096" quat="0.965158978 -0.245910284 -0.0894219216 0" />
+        </body>
+        <geom name="chest_collision" type="ellipsoid" size="0.064 0.092 0.102" class="collision" pos="-0.00563683224 0 0.210854156" mass="6" />
+        <site name="right_clavicle_reference" pos="-0.02591004014 -0.028735497 0.289207687" size=".002" group="4" rgba="0.7 0.3 0.8 1" />
+        <body name="right_upper_arm" pos="-0.02981490254 -0.1038549614 0.2450421139">
+          <joint name="right_shoulder_roll" axis="1 0 0" range="-100 100" />
+          <joint name="right_shoulder_pitch" axis="0 1 0" range="-120 120" />
+          <joint name="right_shoulder_yaw" axis="0 0 1" range="-120 120" />
+          <body name="right_forearm" pos="-0.00405404031 -0.137328453 -0.105163879">
+            <joint name="right_elbow" axis="0 -0.613692105 0.789545439" range="0 145" />
+            <body name="right_hand" pos="0.00422065318 -0.132919559 -0.103314743">
+              <joint name="right_wrist_pitch" axis="0.9937333425 -0.1045697328 0.03948689689" range="-65 65" />
+              <joint name="right_wrist_roll" axis="-0.04857825538 -0.7221903675 -0.6899863956" range="-80 80" />
+              <geom name="right_palm_collision" type="box" size="0.02918362225 0.03295160451 0.009" pos="-0.001746466225 -0.02596390247 -0.02480611801" quat="-0.3704046814 0.9271823139 -0.04129392511 0.03779074632" mass=".12" class="collision" />
+              <site name="right_palm_center" pos="-0.001746466225 -0.02596390247 -0.02480611801" size=".003" group="4" rgba="0.2 0.9 0.3 1" />
+              <body name="right_thumb_proximal" pos="0.01693202972 -0.01222106934 -0.02170875549">
+                <!-- PMX bone 82; source position retained. -->
+                <joint name="right_thumb_cmc_opposition" axis="-0.4252766833 0.5292721097 -0.7341735329" range="-15 90" class="finger" />
+                <joint name="right_thumb_cmc_flex" axis="0.5798578588 0.5499813392 0.601070204" range="-20 55" class="finger" />
+                <geom name="right_thumb_proximal_collision" type="capsule" fromto="0.004718863442 -0.001111847995 -0.003534985411 0.01366202645 -0.003219015957 -0.01023446955" size="0.006" mass="0.001533579058" friction="1.0 0.01 0.001" class="collision" />
+                <body name="right_thumb_middle" pos="0.01838088989 -0.004330863953 -0.01376945496">
+                  <!-- PMX bone 87; source position retained. -->
+                  <joint name="right_thumb_mcp_flex" axis="0.9263250701 0.200647714 0.3188453535" range="0 80" class="finger" />
+                  <geom name="right_thumb_middle_collision" type="capsule" fromto="0.001933737474 -0.002978501682 -0.003743632876 0.009075021071 -0.01397809469 -0.01756885187" size="0.00516" mass="0.001518615774" friction="1.0 0.01 0.001" class="collision" />
+                  <body name="right_thumb_distal" pos="0.01100875854 -0.01695659637 -0.02131248474">
+                    <!-- PMX bone 88; source position retained. -->
+                    <joint name="right_thumb_ip_flex" axis="0.9264310291 0.2004428495 0.3186663024" range="0 80" class="finger" />
+                    <geom name="right_thumb_distal_collision" type="capsule" fromto="0.001644202166 -0.002830810849 -0.002999451479 0.007093013829 -0.01221199005 -0.01293949811" size="0.00444" mass="0.0008945331158" friction="1.0 0.01 0.001" class="collision" />
+                    <site name="right_thumb_tip" pos="0.008737215996 -0.0150428009 -0.01593894958" size=".003" group="4" rgba="0.2 0.9 0.3 1" />
+                    <geom name="right_thumb_distal_visual" type="capsule" fromto="0.001644202166 -0.002830810849 -0.002999451479 0.007093013829 -0.01221199005 -0.01293949811" size="0.00444" mass="0" friction="1.0 0.01 0.001" class="visual" material="skin" />
+                  </body>
+                  <geom name="right_thumb_middle_visual" type="capsule" fromto="0.001933737474 -0.002978501682 -0.003743632876 0.009075021071 -0.01397809469 -0.01756885187" size="0.00516" mass="0" friction="1.0 0.01 0.001" class="visual" material="skin" />
+                </body>
+                <geom name="right_thumb_proximal_visual" type="capsule" fromto="0.004718863442 -0.001111847995 -0.003534985411 0.01366202645 -0.003219015957 -0.01023446955" size="0.006" mass="0" friction="1.0 0.01 0.001" class="visual" material="skin" />
+              </body>
+              <body name="right_index_proximal" pos="0.02169717073 -0.0554120636 -0.0516217804">
+                <!-- PMX bone 83; source position retained. -->
+                <joint name="right_index_mcp_spread" axis="0.1006687496 0.6837442826 -0.722744463" range="-15 15" class="finger" />
+                <joint name="right_index_mcp_flex" axis="0.9941489966 -0.04053643461 0.1001227746" range="0 90" class="finger" />
+                <geom name="right_index_proximal_collision" type="capsule" fromto="0.0001514559099 -0.004406460004 -0.003287882501 0.0005192036322 -0.01510571651 -0.0112711385" size="0.0055" mass="0.001376218974" friction="1.0 0.01 0.001" class="collision" />
+                <body name="right_index_middle" pos="0.0006706595421 -0.01951217651 -0.014559021">
+                  <!-- PMX bone 90; source position retained. -->
+                  <joint name="right_index_pip_flex" axis="0.9942110652 -0.04171539425 0.09901607844" range="0 105" class="finger" />
+                  <geom name="right_index_middle_collision" type="capsule" fromto="0.0001134341704 -0.003841464144 -0.002757387517 0.0003373819841 -0.01142548837 -0.008201169612" size="0.00473" mass="0.0007697374132" friction="1.0 0.01 0.001" class="collision" />
+                  <body name="right_index_distal" pos="0.0004508161545 -0.01526695251 -0.01095855713">
+                    <!-- PMX bone 91; source position retained. -->
+                    <joint name="right_index_dip_flex" axis="0.9944591548 -0.0470433683 0.09401016402" range="0 80" class="finger" />
+                    <geom name="right_index_distal_collision" type="capsule" fromto="3.285300917e-05 -0.003489901416 -0.002093897989 0.0001308904868 -0.01390420259 -0.00834235079" size="0.00407" mass="0.0006401168652" friction="1.0 0.01 0.001" class="collision" />
+                    <site name="right_index_tip" pos="0.0001637434959 -0.017394104 -0.01043624878" size=".003" group="4" rgba="0.2 0.9 0.3 1" />
+                    <geom name="right_index_distal_visual" type="capsule" fromto="3.285300917e-05 -0.003489901416 -0.002093897989 0.0001308904868 -0.01390420259 -0.00834235079" size="0.00407" mass="0" friction="1.0 0.01 0.001" class="visual" material="skin" />
+                  </body>
+                  <geom name="right_index_middle_visual" type="capsule" fromto="0.0001134341704 -0.003841464144 -0.002757387517 0.0003373819841 -0.01142548837 -0.008201169612" size="0.00473" mass="0" friction="1.0 0.01 0.001" class="visual" material="skin" />
+                </body>
+                <geom name="right_index_proximal_visual" type="capsule" fromto="0.0001514559099 -0.004406460004 -0.003287882501 0.0005192036322 -0.01510571651 -0.0112711385" size="0.0055" mass="0" friction="1.0 0.01 0.001" class="visual" material="skin" />
+              </body>
+              <body name="right_middle_proximal" pos="0.004035670757 -0.05746192932 -0.05083694458">
+                <!-- PMX bone 84; source position retained. -->
+                <joint name="right_middle_mcp_spread" axis="0.1006687496 0.6837442826 -0.722744463" range="-15 15" class="finger" />
+                <joint name="right_middle_mcp_flex" axis="0.9948772828 -0.06244876256 0.07949430349" range="0 90" class="finger" />
+                <geom name="right_middle_proximal_collision" type="capsule" fromto="-1.553369722e-05 -0.004653792366 -0.003461498999 -5.629943648e-05 -0.0168669367 -0.01254565737" size="0.0058" mass="0.001698134536" friction="1.0 0.01 0.001" class="collision" />
+                <body name="right_middle_middle" pos="-7.18331337e-05 -0.02152072906 -0.01600715637">
+                  <!-- PMX bone 93; source position retained. -->
+                  <joint name="right_middle_pip_flex" axis="0.994884472 -0.06304179752 0.07893427079" range="0 105" class="finger" />
+                  <geom name="right_middle_middle_collision" type="capsule" fromto="-1.304085456e-05 -0.003976359952 -0.003011400915 -4.555885591e-05 -0.01389160575 -0.0105204747" size="0.004988" mass="0.001044413032" friction="1.0 0.01 0.001" class="collision" />
+                  <body name="right_middle_distal" pos="-5.859971046e-05 -0.0178679657 -0.01353187561">
+                    <!-- PMX bone 94; source position retained. -->
+                    <joint name="right_middle_dip_flex" axis="0.9948372217 -0.05980689241 0.0819880351" range="0 80" class="finger" />
+                    <geom name="right_middle_distal_collision" type="capsule" fromto="-1.269201894e-05 -0.003539337121 -0.002427796462 -5.199690204e-05 -0.01450002293 -0.009946242235" size="0.004292" mass="0.0007702748088" friction="1.0 0.01 0.001" class="collision" />
+                    <site name="right_middle_tip" pos="-6.468892097e-05 -0.01803936005 -0.0123740387" size=".003" group="4" rgba="0.2 0.9 0.3 1" />
+                    <geom name="right_middle_distal_visual" type="capsule" fromto="-1.269201894e-05 -0.003539337121 -0.002427796462 -5.199690204e-05 -0.01450002293 -0.009946242235" size="0.004292" mass="0" friction="1.0 0.01 0.001" class="visual" material="skin" />
+                  </body>
+                  <geom name="right_middle_middle_visual" type="capsule" fromto="-1.304085456e-05 -0.003976359952 -0.003011400915 -4.555885591e-05 -0.01389160575 -0.0105204747" size="0.004988" mass="0" friction="1.0 0.01 0.001" class="visual" material="skin" />
+                </body>
+                <geom name="right_middle_proximal_visual" type="capsule" fromto="-1.553369722e-05 -0.004653792366 -0.003461498999 -5.629943648e-05 -0.0168669367 -0.01254565737" size="0.0058" mass="0" friction="1.0 0.01 0.001" class="visual" material="skin" />
+              </body>
+              <body name="right_ring_proximal" pos="-0.01391003422 -0.05299304962 -0.05058921814">
+                <!-- PMX bone 85; source position retained. -->
+                <joint name="right_ring_mcp_spread" axis="0.1006687496 0.6837442826 -0.722744463" range="-15 15" class="finger" />
+                <joint name="right_ring_mcp_flex" axis="0.9947250066 -0.05478807211 0.0867204036" range="0 90" class="finger" />
+                <geom name="right_ring_proximal_collision" type="capsule" fromto="1.987229681e-05 -0.004374765785 -0.002991827103 8.097987974e-05 -0.01782723006 -0.01219173613" size="0.0053" mass="0.001443282305" friction="1.0 0.01 0.001" class="collision" />
+                <body name="right_ring_middle" pos="0.0001008521765 -0.02220199585 -0.01518356323">
+                  <!-- PMX bone 96; source position retained. -->
+                  <joint name="right_ring_pip_flex" axis="0.9946056759 -0.05090253446 0.09037965167" range="0 105" class="finger" />
+                  <geom name="right_ring_middle_collision" type="capsule" fromto="2.739242429e-05 -0.003835876028 -0.002461842553 0.0001062620882 -0.01488032575 -0.009550105079" size="0.004558" mass="0.0008772421268" friction="1.0 0.01 0.001" class="collision" />
+                  <body name="right_ring_distal" pos="0.0001336545125 -0.01871620178 -0.01201194763">
+                    <!-- PMX bone 97; source position retained. -->
+                    <joint name="right_ring_dip_flex" axis="0.9942925032 -0.04334339126 0.09748727339" range="0 80" class="finger" />
+                    <geom name="right_ring_distal_collision" type="capsule" fromto="4.04631322e-05 -0.003413757685 -0.001930467613 0.0001726929123 -0.01456960261 -0.008239057533" size="0.003922" mass="0.0006104437646" friction="1.0 0.01 0.001" class="collision" />
+                    <site name="right_ring_tip" pos="0.0002131560445 -0.01798336029 -0.01016952515" size=".003" group="4" rgba="0.2 0.9 0.3 1" />
+                    <geom name="right_ring_distal_visual" type="capsule" fromto="4.04631322e-05 -0.003413757685 -0.001930467613 0.0001726929123 -0.01456960261 -0.008239057533" size="0.003922" mass="0" friction="1.0 0.01 0.001" class="visual" material="skin" />
+                  </body>
+                  <geom name="right_ring_middle_visual" type="capsule" fromto="2.739242429e-05 -0.003835876028 -0.002461842553 0.0001062620882 -0.01488032575 -0.009550105079" size="0.004558" mass="0" friction="1.0 0.01 0.001" class="visual" material="skin" />
+                </body>
+                <geom name="right_ring_proximal_visual" type="capsule" fromto="1.987229681e-05 -0.004374765785 -0.002991827103 8.097987974e-05 -0.01782723006 -0.01219173613" size="0.0053" mass="0" friction="1.0 0.01 0.001" class="visual" material="skin" />
+              </body>
+              <body name="right_little_proximal" pos="-0.02579453707 -0.04184417725 -0.04540100098">
+                <!-- PMX bone 86; source position retained. -->
+                <joint name="right_little_mcp_spread" axis="0.1006687496 0.6837442826 -0.722744463" range="-15 15" class="finger" />
+                <joint name="right_little_mcp_flex" axis="0.9943010049 -0.09476090581 0.04884549536" range="0 90" class="finger" />
+                <geom name="right_little_proximal_collision" type="capsule" fromto="-0.0002209613705 -0.00366185427 -0.002606146461 -0.001022405825 -0.01694369077 -0.01205884683" size="0.0045" mass="0.0009940386599" friction="1.0 0.01 0.001" class="collision" />
+                <body name="right_little_middle" pos="-0.001243367195 -0.02060554504 -0.01466499329">
+                  <!-- PMX bone 99; source position retained. -->
+                  <joint name="right_little_pip_flex" axis="0.9931521235 -0.02577392073 0.1139498339" range="0 105" class="finger" />
+                  <geom name="right_little_middle_collision" type="capsule" fromto="0.0001938003098 -0.00304683892 -0.002378258615 0.0005744487251 -0.009031217416 -0.007049460502" size="0.00387" mass="0.0004203009617" friction="1.0 0.01 0.001" class="collision" />
+                  <body name="right_little_distal" pos="0.0007682490349 -0.01207805634 -0.009427719116">
+                    <!-- PMX bone 100; source position retained. -->
+                    <joint name="right_little_dip_flex" axis="0.9899489897 0.003689018363 0.1413767623" range="0 80" class="finger" />
+                    <geom name="right_little_distal_collision" type="capsule" fromto="0.0002618849756 -0.002814524852 -0.001760331253 0.00118794198 -0.01276702575 -0.007985075852" size="0.00333" mass="0.0003954220881" friction="1.0 0.01 0.001" class="collision" />
+                    <site name="right_little_tip" pos="0.001449826956 -0.0155815506 -0.009745407104" size=".003" group="4" rgba="0.2 0.9 0.3 1" />
+                    <geom name="right_little_distal_visual" type="capsule" fromto="0.0002618849756 -0.002814524852 -0.001760331253 0.00118794198 -0.01276702575 -0.007985075852" size="0.00333" mass="0" friction="1.0 0.01 0.001" class="visual" material="skin" />
+                  </body>
+                  <geom name="right_little_middle_visual" type="capsule" fromto="0.0001938003098 -0.00304683892 -0.002378258615 0.0005744487251 -0.009031217416 -0.007049460502" size="0.00387" mass="0" friction="1.0 0.01 0.001" class="visual" material="skin" />
+                </body>
+                <geom name="right_little_proximal_visual" type="capsule" fromto="-0.0002209613705 -0.00366185427 -0.002606146461 -0.001022405825 -0.01694369077 -0.01205884683" size="0.0045" mass="0" friction="1.0 0.01 0.001" class="visual" material="skin" />
+              </body>
+              <geom name="right_palm_visual" type="box" size="0.02918362225 0.03295160451 0.009" pos="-0.001746466225 -0.02596390247 -0.02480611801" quat="-0.3704046814 0.9271823139 -0.04129392511 0.03779074632" mass="0" class="visual" material="skin" />
+            </body>
+            <geom name="right_forearm_collision" type="capsule" size="0.023" class="collision" fromto="0.000551383976 -0.0173645433 -0.0134969853 0.00376952084 -0.118712205 -0.0922717551" mass="0.45" />
+            <geom name="right_forearm_visual" type="capsule" size="0.023" class="visual" fromto="0.000551383976 -0.0173645433 -0.0134969853 0.00376952084 -0.118712205 -0.0922717551" mass="0" material="ivory" />
+          </body>
+          <geom name="right_upper_arm_collision" type="capsule" size="0.03" class="collision" fromto="-0.00058578545 -0.0198431696 -0.0151955742 -0.00353854911 -0.119866464 -0.0917917737" mass="0.65" />
+          <geom name="right_upper_arm_visual" type="capsule" size="0.03" class="visual" fromto="-0.00058578545 -0.0198431696 -0.0151955742 -0.00353854911 -0.119866464 -0.0917917737" mass="0" material="ivory" />
+        </body>
+        <site name="left_clavicle_reference" pos="-0.02591004014 0.028735497 0.289207687" size=".002" group="4" rgba="0.7 0.3 0.8 1" />
+        <body name="left_upper_arm" pos="-0.02981490254 0.1038549614 0.2450421139">
+          <joint name="left_shoulder_roll" axis="1 0 0" range="-100 100" />
+          <joint name="left_shoulder_pitch" axis="0 1 0" range="-120 120" />
+          <joint name="left_shoulder_yaw" axis="0 0 1" range="-120 120" />
+          <body name="left_forearm" pos="-0.00405404031 0.137328453 -0.105163879">
+            <joint name="left_elbow" axis="0 -0.613692105 -0.789545439" range="0 145" />
+            <body name="left_hand" pos="0.00422065318 0.132919559 -0.103314743">
+              <joint name="left_wrist_pitch" axis="-0.9937332524 -0.1045710783 -0.0394856003" range="-65 65" />
+              <joint name="left_wrist_roll" axis="-0.0485787217 0.7221807128 -0.689996468" range="-80 80" />
+              <geom name="left_palm_collision" type="box" size="0.02918363101 0.03295215777 0.009" pos="-0.001746509867 0.02596395493 -0.02480686188" quat="0.03779068177 -0.04129452947 0.9271797133 -0.3704111303" mass=".12" class="collision" />
+              <site name="left_palm_center" pos="-0.001746509867 0.02596395493 -0.02480686188" size=".003" group="4" rgba="0.2 0.9 0.3 1" />
+              <body name="left_thumb_proximal" pos="0.01693195581 0.01222118378 -0.02171005249">
+                <!-- PMX bone 102; source position retained. -->
+                <joint name="left_thumb_cmc_opposition" axis="0.4252772313 0.529274948 0.7341711693" range="-15 90" class="finger" />
+                <joint name="left_thumb_cmc_flex" axis="-0.5798603723 0.5499712109 -0.6010770465" range="-20 55" class="finger" />
+                <geom name="left_thumb_proximal_collision" type="capsule" fromto="0.004718860696 0.001111834526 -0.003534993312 0.01366207926 0.003218991279 -0.01023453794" size="0.006" mass="0.001533585174" friction="1.0 0.01 0.001" class="collision" />
+                <body name="left_thumb_middle" pos="0.01838093996 0.004330825806 -0.01376953125">
+                  <!-- PMX bone 107; source position retained. -->
+                  <joint name="left_thumb_mcp_flex" axis="-0.9263252218 0.2006424466 -0.3188482273" range="0 80" class="finger" />
+                  <geom name="left_thumb_middle_collision" type="capsule" fromto="0.001933732425 0.002978507056 -0.003743631208 0.009075002278 0.01397812747 -0.01756885353" size="0.00516" mass="0.00151861654" friction="1.0 0.01 0.001" class="collision" />
+                  <body name="left_thumb_distal" pos="0.0110087347 0.01695663452 -0.02131248474">
+                    <!-- PMX bone 108; source position retained. -->
+                    <joint name="left_thumb_ip_flex" axis="-0.9264295026 0.2004408303 -0.3186720104" range="0 80" class="finger" />
+                    <geom name="left_thumb_distal_collision" type="capsule" fromto="0.001644214142 0.002830818109 -0.002999438062 0.007093020927 0.01221194465 -0.01293935893" size="0.00444" mass="0.0008945278988" friction="1.0 0.01 0.001" class="collision" />
+                    <site name="left_thumb_tip" pos="0.008737235069 0.01504276276 -0.015938797" size=".003" group="4" rgba="0.2 0.9 0.3 1" />
+                    <geom name="left_thumb_distal_visual" type="capsule" fromto="0.001644214142 0.002830818109 -0.002999438062 0.007093020927 0.01221194465 -0.01293935893" size="0.00444" mass="0" friction="1.0 0.01 0.001" class="visual" material="skin" />
+                  </body>
+                  <geom name="left_thumb_middle_visual" type="capsule" fromto="0.001933732425 0.002978507056 -0.003743631208 0.009075002278 0.01397812747 -0.01756885353" size="0.00516" mass="0" friction="1.0 0.01 0.001" class="visual" material="skin" />
+                </body>
+                <geom name="left_thumb_proximal_visual" type="capsule" fromto="0.004718860696 0.001111834526 -0.003534993312 0.01366207926 0.003218991279 -0.01023453794" size="0.006" mass="0" friction="1.0 0.01 0.001" class="visual" material="skin" />
+              </body>
+              <body name="left_index_proximal" pos="0.02169709206 0.0554120636 -0.05162338257">
+                <!-- PMX bone 103; source position retained. -->
+                <joint name="left_index_mcp_spread" axis="0.1006694136 -0.6837542743 -0.7227349179" range="-15 15" class="finger" />
+                <joint name="left_index_mcp_flex" axis="-0.9948112185 -0.07991544997 -0.06296157889" range="0 90" class="finger" />
+                <geom name="left_index_proximal_collision" type="capsule" fromto="-0.0001459107308 0.004406675828 -0.003287844006 -0.0005001916977 0.01510637807 -0.01127094811" size="0.0055" mass="0.001376212473" friction="1.0 0.01 0.001" class="collision" />
+                <body name="left_index_middle" pos="-0.0006461024284 0.01951305389 -0.01455879211">
+                  <!-- PMX bone 110; source position retained. -->
+                  <joint name="left_index_pip_flex" axis="-0.9947621336 -0.08211095815 -0.06087764824" range="0 105" class="finger" />
+                  <geom name="left_index_middle_collision" type="capsule" fromto="-0.0001482002205 0.003840029341 -0.002757736637 -0.0004407842689 0.01142120113 -0.008202193783" size="0.00473" mass="0.0007697362149" friction="1.0 0.01 0.001" class="collision" />
+                  <body name="left_index_distal" pos="-0.0005889844894 0.01526123047 -0.01095993042">
+                    <!-- PMX bone 111; source position retained. -->
+                    <joint name="left_index_dip_flex" axis="-0.9944263161 -0.09203007412 -0.05144674304" range="0 80" class="finger" />
+                    <geom name="left_index_distal_collision" type="capsule" fromto="-0.0002138346374 0.003482262021 -0.002095954667 -0.0008519488633 0.0138738476 -0.008350593795" size="0.00407" mass="0.0006401203272" friction="1.0 0.01 0.001" class="collision" />
+                    <site name="left_index_tip" pos="-0.001065783501 0.01735610962 -0.01044654846" size=".003" group="4" rgba="0.2 0.9 0.3 1" />
+                    <geom name="left_index_distal_visual" type="capsule" fromto="-0.0002138346374 0.003482262021 -0.002095954667 -0.0008519488633 0.0138738476 -0.008350593795" size="0.00407" mass="0" friction="1.0 0.01 0.001" class="visual" material="skin" />
+                  </body>
+                  <geom name="left_index_middle_visual" type="capsule" fromto="-0.0001482002205 0.003840029341 -0.002757736637 -0.0004407842689 0.01142120113 -0.008202193783" size="0.00473" mass="0" friction="1.0 0.01 0.001" class="visual" material="skin" />
+                </body>
+                <geom name="left_index_proximal_visual" type="capsule" fromto="-0.0001459107308 0.004406675828 -0.003287844006 -0.0005001916977 0.01510637807 -0.01127094811" size="0.0055" mass="0" friction="1.0 0.01 0.001" class="visual" material="skin" />
+              </body>
+              <body name="left_middle_proximal" pos="0.004035578966 0.05746208191 -0.05083839417">
+                <!-- PMX bone 104; source position retained. -->
+                <joint name="left_middle_mcp_spread" axis="0.1006694136 -0.6837542743 -0.7227349179" range="-15 15" class="finger" />
+                <joint name="left_middle_mcp_flex" axis="-0.9948772072 -0.06244965997 -0.07949454459" range="0 90" class="finger" />
+                <geom name="left_middle_proximal_collision" type="capsule" fromto="-1.553505706e-05 0.00465378061 -0.003461514798 -5.630403711e-05 0.01686679587 -0.01254564157" size="0.0058" mass="0.00169812548" friction="1.0 0.01 0.001" class="collision" />
+                <body name="left_middle_middle" pos="-7.183909416e-05 0.02152057648 -0.01600715637">
+                  <!-- PMX bone 113; source position retained. -->
+                  <joint name="left_middle_pip_flex" axis="-0.9948843933 -0.06304235033 -0.07893482187" range="0 105" class="finger" />
+                  <geom name="left_middle_middle_collision" type="capsule" fromto="-1.304073019e-05 0.003976355986 -0.003011406152 -4.555898028e-05 0.0138917623 -0.01052062205" size="0.004988" mass="0.001044424728" friction="1.0 0.01 0.001" class="collision" />
+                  <body name="left_middle_distal" pos="-5.859971046e-05 0.01786811829 -0.0135320282">
+                    <!-- PMX bone 114; source position retained. -->
+                    <joint name="left_middle_dip_flex" axis="-0.994837141 -0.05980772217 -0.08198840892" range="0 80" class="finger" />
+                    <geom name="left_middle_distal_collision" type="capsule" fromto="-1.269531841e-05 0.003539344095 -0.002427786277 -5.201029187e-05 0.01450001595 -0.009946176126" size="0.004292" mass="0.0007702730626" friction="1.0 0.01 0.001" class="collision" />
+                    <site name="left_middle_tip" pos="-6.470561028e-05 0.01803936005 -0.0123739624" size=".003" group="4" rgba="0.2 0.9 0.3 1" />
+                    <geom name="left_middle_distal_visual" type="capsule" fromto="-1.269531841e-05 0.003539344095 -0.002427786277 -5.201029187e-05 0.01450001595 -0.009946176126" size="0.004292" mass="0" friction="1.0 0.01 0.001" class="visual" material="skin" />
+                  </body>
+                  <geom name="left_middle_middle_visual" type="capsule" fromto="-1.304073019e-05 0.003976355986 -0.003011406152 -4.555898028e-05 0.0138917623 -0.01052062205" size="0.004988" mass="0" friction="1.0 0.01 0.001" class="visual" material="skin" />
+                </body>
+                <geom name="left_middle_proximal_visual" type="capsule" fromto="-1.553505706e-05 0.00465378061 -0.003461514798 -5.630403711e-05 0.01686679587 -0.01254564157" size="0.0058" mass="0" friction="1.0 0.01 0.001" class="visual" material="skin" />
+              </body>
+              <body name="left_ring_proximal" pos="-0.01391012467 0.05299324036 -0.05059066772">
+                <!-- PMX bone 105; source position retained. -->
+                <joint name="left_ring_mcp_spread" axis="0.1006694136 -0.6837542743 -0.7227349179" range="-15 15" class="finger" />
+                <joint name="left_ring_mcp_flex" axis="-0.9947249621 -0.05479056921 -0.08671933681" range="0 90" class="finger" />
+                <geom name="left_ring_proximal_collision" type="capsule" fromto="1.986285105e-05 0.004374739828 -0.002991865121 8.094112024e-05 0.01782706529 -0.0121918507" size="0.0053" mass="0.001443277889" friction="1.0 0.01 0.001" class="collision" />
+                <body name="left_ring_middle" pos="0.0001008039713 0.02220180511 -0.01518371582">
+                  <!-- PMX bone 116; source position retained. -->
+                  <joint name="left_ring_pip_flex" axis="-0.9946056155 -0.05090444243 -0.09037924197" range="0 105" class="finger" />
+                  <geom name="left_ring_middle_collision" type="capsule" fromto="2.738591459e-05 0.003835866407 -0.002461857615 0.0001062377152 0.01488041167 -0.009550242604" size="0.004558" mass="0.0008772488171" friction="1.0 0.01 0.001" class="collision" />
+                  <body name="left_ring_distal" pos="0.0001336236298 0.01871627808 -0.01201210022">
+                    <!-- PMX bone 117; source position retained. -->
+                    <joint name="left_ring_dip_flex" axis="-0.9942924058 -0.04334457691 -0.09748773998" range="0 80" class="finger" />
+                    <geom name="left_ring_distal_collision" type="capsule" fromto="4.045938668e-05 0.003413760415 -0.001930462864 0.0001726758521 0.01456952358 -0.008238985988" size="0.003922" mass="0.0006104402407" friction="1.0 0.01 0.001" class="collision" />
+                    <site name="left_ring_tip" pos="0.0002131352387 0.017983284 -0.01016944885" size=".003" group="4" rgba="0.2 0.9 0.3 1" />
+                    <geom name="left_ring_distal_visual" type="capsule" fromto="4.045938668e-05 0.003413760415 -0.001930462864 0.0001726758521 0.01456952358 -0.008238985988" size="0.003922" mass="0" friction="1.0 0.01 0.001" class="visual" material="skin" />
+                  </body>
+                  <geom name="left_ring_middle_visual" type="capsule" fromto="2.738591459e-05 0.003835866407 -0.002461857615 0.0001062377152 0.01488041167 -0.009550242604" size="0.004558" mass="0" friction="1.0 0.01 0.001" class="visual" material="skin" />
+                </body>
+                <geom name="left_ring_proximal_visual" type="capsule" fromto="1.986285105e-05 0.004374739828 -0.002991865121 8.094112024e-05 0.01782706529 -0.0121918507" size="0.0053" mass="0" friction="1.0 0.01 0.001" class="visual" material="skin" />
+              </body>
+              <body name="left_little_proximal" pos="-0.02579462528 0.04184425354 -0.04540245056">
+                <!-- PMX bone 106; source position retained. -->
+                <joint name="left_little_mcp_spread" axis="0.1006694136 -0.6837542743 -0.7227349179" range="-15 15" class="finger" />
+                <joint name="left_little_mcp_flex" axis="-0.9943009062 -0.09476269004 -0.04884404224" range="0 90" class="finger" />
+                <geom name="left_little_proximal_collision" type="capsule" fromto="-0.0002209709998 0.003661849326 -0.002606152592 -0.001022447455 0.01694361942 -0.01205884069" size="0.0045" mass="0.0009940360072" friction="1.0 0.01 0.001" class="collision" />
+                <body name="left_little_middle" pos="-0.001243418455 0.02060546875 -0.01466499329">
+                  <!-- PMX bone 119; source position retained. -->
+                  <joint name="left_little_pip_flex" axis="-0.9948939971 -0.06393783295 -0.07808897475" range="0 105" class="finger" />
+                  <geom name="left_little_middle_collision" type="capsule" fromto="-9.800777657e-06 0.003054597255 -0.002376181718 -2.90507219e-05 0.009054205541 -0.007043297652" size="0.00387" mass="0.0004203006043" friction="1.0 0.01 0.001" class="collision" />
+                  <body name="left_little_distal" pos="-3.885149956e-05 0.0121088028 -0.00941947937">
+                    <!-- PMX bone 120; source position retained. -->
+                    <joint name="left_little_dip_flex" axis="-0.9941242259 -0.04008228727 -0.1005506526" range="0 80" class="finger" />
+                    <geom name="left_little_distal_collision" type="capsule" fromto="6.364450787e-05 0.002828249734 -0.001756659563 0.0002886976209 0.01282921334 -0.007968377058" size="0.00333" mass="0.0003954200744" friction="1.0 0.01 0.001" class="collision" />
+                    <site name="left_little_tip" pos="0.0003523421288 0.01565746307 -0.009725036621" size=".003" group="4" rgba="0.2 0.9 0.3 1" />
+                    <geom name="left_little_distal_visual" type="capsule" fromto="6.364450787e-05 0.002828249734 -0.001756659563 0.0002886976209 0.01282921334 -0.007968377058" size="0.00333" mass="0" friction="1.0 0.01 0.001" class="visual" material="skin" />
+                  </body>
+                  <geom name="left_little_middle_visual" type="capsule" fromto="-9.800777657e-06 0.003054597255 -0.002376181718 -2.90507219e-05 0.009054205541 -0.007043297652" size="0.00387" mass="0" friction="1.0 0.01 0.001" class="visual" material="skin" />
+                </body>
+                <geom name="left_little_proximal_visual" type="capsule" fromto="-0.0002209709998 0.003661849326 -0.002606152592 -0.001022447455 0.01694361942 -0.01205884069" size="0.0045" mass="0" friction="1.0 0.01 0.001" class="visual" material="skin" />
+              </body>
+              <geom name="left_palm_visual" type="box" size="0.02918363101 0.03295215777 0.009" pos="-0.001746509867 0.02596395493 -0.02480686188" quat="0.03779068177 -0.04129452947 0.9271797133 -0.3704111303" mass="0" class="visual" material="skin" />
+            </body>
+            <geom name="left_forearm_collision" type="capsule" size="0.023" class="collision" fromto="0.000551383976 0.0173645433 -0.0134969853 0.00376952084 0.118712205 -0.0922717551" mass="0.45" />
+            <geom name="left_forearm_visual" type="capsule" size="0.023" class="visual" fromto="0.000551383976 0.0173645433 -0.0134969853 0.00376952084 0.118712205 -0.0922717551" mass="0" material="ivory" />
+          </body>
+          <geom name="left_upper_arm_collision" type="capsule" size="0.03" class="collision" fromto="-0.00058578545 0.0198431696 -0.0151955742 -0.00353854911 0.119866464 -0.0917917737" mass="0.65" />
+          <geom name="left_upper_arm_visual" type="capsule" size="0.03" class="visual" fromto="-0.00058578545 0.0198431696 -0.0151955742 -0.00353854911 0.119866464 -0.0917917737" mass="0" material="ivory" />
+        </body>
+        <geom name="waist_visual" type="capsule" size="0.057" class="visual" fromto="0 0 0.016 0 0 0.095" mass="0" material="ivory" />
+        <geom name="chest_visual" type="ellipsoid" size="0.064 0.092 0.102" class="visual" pos="-0.00563683224 0 0.210854156" mass="0" material="ivory" />
+        <geom class="visual" type="box" size=".008 .055 .14" pos="-0.072 -0.06 0.12" euler="-8 -8 0" name="cape_panel_-1" material="green" />
+        <geom class="visual" type="box" size=".008 .055 .14" pos="-0.072 0.06 0.12" euler="8 -8 0" name="cape_panel_1" material="green" />
+      </body>
+      <body name="right_thigh" pos="-0.0145505381 -0.0588971043 -0.0611756897">
+        <joint name="right_hip_roll" axis="1 0 0" range="-40 40" />
+        <joint name="right_hip_pitch" axis="0 1 0" range="-105 45" />
+        <joint name="right_hip_yaw" axis="0 0 1" range="-45 45" />
+        <body name="right_shin" pos="1.09124184e-05 0.00697787285 -0.368055267">
+          <joint name="right_knee" axis="0 1 0" range="0 145" />
+          <body name="right_foot" pos="-0.0273214664 0.00587427139 -0.331157742">
+            <joint name="right_ankle_pitch" axis="0 1 0" range="-40 30" />
+            <joint name="right_ankle_roll" axis="1 0 0" range="-25 25" />
+            <geom name="right_foot_collision" type="box" size="0.09 0.036 0.022" class="collision" pos="0.04 0 -0.0643879383" friction="1.0 0.01 0.001" mass="0.5" />
+            <geom name="right_ankle_collision" type="ellipsoid" size="0.028 0.029 0.033" class="collision" pos="0 0 -0.014" mass="0.1" />
+            <geom name="right_foot_visual" type="box" size="0.09 0.036 0.022" class="visual" pos="0.04 0 -0.0643879383" friction="1.0 0.01 0.001" mass="0" material="green_dark" />
+            <geom name="right_ankle_visual" type="ellipsoid" size="0.028 0.029 0.033" class="visual" pos="0 0 -0.014" mass="0" material="green_dark" />
+          </body>
+          <geom name="right_shin_collision" type="capsule" size="0.028" class="collision" fromto="-0.00221968807 0.000477245619 -0.0269043718 -0.0252661997 0.0054323773 -0.306246287" mass="1.1" />
+          <geom name="right_shin_visual" type="capsule" size="0.028" class="visual" fromto="-0.00221968807 0.000477245619 -0.0269043718 -0.0252661997 0.0054323773 -0.306246287" mass="0" material="white" />
+        </body>
+        <geom name="right_thigh_collision" type="capsule" size="0.037" class="collision" fromto="1.18574125e-06 0.000758214297 -0.0399928132 1.01713301e-05 0.00650398891 -0.343059759" mass="2.2" />
+        <geom name="right_thigh_visual" type="capsule" size="0.037" class="visual" fromto="1.18574125e-06 0.000758214297 -0.0399928132 1.01713301e-05 0.00650398891 -0.343059759" mass="0" material="white" />
+      </body>
+      <body name="left_thigh" pos="-0.0145505381 0.0588971043 -0.0611756897">
+        <joint name="left_hip_roll" axis="1 0 0" range="-40 40" />
+        <joint name="left_hip_pitch" axis="0 1 0" range="-105 45" />
+        <joint name="left_hip_yaw" axis="0 0 1" range="-45 45" />
+        <body name="left_shin" pos="1.09124184e-05 -0.00697787285 -0.368055267">
+          <joint name="left_knee" axis="0 1 0" range="0 145" />
+          <body name="left_foot" pos="-0.0273214664 -0.00587427139 -0.331157742">
+            <joint name="left_ankle_pitch" axis="0 1 0" range="-40 30" />
+            <joint name="left_ankle_roll" axis="1 0 0" range="-25 25" />
+            <geom name="left_foot_collision" type="box" size="0.09 0.036 0.022" class="collision" pos="0.04 0 -0.0643879383" friction="1.0 0.01 0.001" mass="0.5" />
+            <geom name="left_ankle_collision" type="ellipsoid" size="0.028 0.029 0.033" class="collision" pos="0 0 -0.014" mass="0.1" />
+            <geom name="left_foot_visual" type="box" size="0.09 0.036 0.022" class="visual" pos="0.04 0 -0.0643879383" friction="1.0 0.01 0.001" mass="0" material="green_dark" />
+            <geom name="left_ankle_visual" type="ellipsoid" size="0.028 0.029 0.033" class="visual" pos="0 0 -0.014" mass="0" material="green_dark" />
+          </body>
+          <geom name="left_shin_collision" type="capsule" size="0.028" class="collision" fromto="-0.00221968807 -0.000477245619 -0.0269043718 -0.0252661997 -0.0054323773 -0.306246287" mass="1.1" />
+          <geom name="left_shin_visual" type="capsule" size="0.028" class="visual" fromto="-0.00221968807 -0.000477245619 -0.0269043718 -0.0252661997 -0.0054323773 -0.306246287" mass="0" material="white" />
+        </body>
+        <geom name="left_thigh_collision" type="capsule" size="0.037" class="collision" fromto="1.18574125e-06 -0.000758214297 -0.0399928132 1.01713301e-05 -0.00650398891 -0.343059759" mass="2.2" />
+        <geom name="left_thigh_visual" type="capsule" size="0.037" class="visual" fromto="1.18574125e-06 -0.000758214297 -0.0399928132 1.01713301e-05 -0.00650398891 -0.343059759" mass="0" material="white" />
+      </body>
+      <geom name="pelvis_collision" type="ellipsoid" size="0.061 0.096 0.06" class="collision" pos="0 0 -0.025" mass="3.5" />
+      <geom name="pelvis_visual" type="ellipsoid" size="0.061 0.096 0.06" class="visual" pos="0 0 -0.025" mass="0" material="green_dark" />
+    </body>
+    <camera name="front" pos="2.8 -1.0 1.20" xyaxes="0.336336 0.941742 0 -0.14270 0.05096 0.98845" fovy="36" />
+  </worldbody>
+  <keyframe>
+    <key name="open" qpos="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0" />
+    <key name="relaxed" qpos="0 0 0 0 0 0 0 0 0 0 0 0.0872664626 0.1745329252 0.1745329252 0.1745329252 0 0.2094395102 0.3141592654 0.3141592654 0 0.2094395102 0.3141592654 0.3141592654 0 0.2094395102 0.3141592654 0.3141592654 0 0.2094395102 0.3141592654 0.3141592654 0 0 0 0 0 0 0.0872664626 0.1745329252 0.1745329252 0.1745329252 0 0.2094395102 0.3141592654 0.3141592654 0 0.2094395102 0.3141592654 0.3141592654 0 0.2094395102 0.3141592654 0.3141592654 0 0.2094395102 0.3141592654 0.3141592654 0 0 0 0 0 0 0 0 0 0 0 0" />
+    <key name="fist" qpos="0 0 0 0 0 0 0 0 0 0 0 0.7766715171 0.1675516082 0.5183627878 1.169370599 0 1.134464014 1.483529864 0.9599310886 0 1.134464014 1.483529864 0.9599310886 0 1.134464014 1.483529864 0.9599310886 0 1.134464014 1.483529864 0.9599310886 0 0 0 0 0 0 0.7766715171 0.1675516082 0.5183627878 1.169370599 0 1.134464014 1.483529864 0.9599310886 0 1.134464014 1.483529864 0.9599310886 0 1.134464014 1.483529864 0.9599310886 0 1.134464014 1.483529864 0.9599310886 0 0 0 0 0 0 0 0 0 0 0 0" />
+    <key name="point" qpos="0 0 0 0 0 0 0 0 0 0 0 0.7766715171 0.1675516082 0.5183627878 1.169370599 0 0 0 0 0 1.134464014 1.483529864 0.9599310886 0 1.134464014 1.483529864 0.9599310886 0 1.134464014 1.483529864 0.9599310886 0 0 0 0 0 0 0.7766715171 0.1675516082 0.5183627878 1.169370599 0 0 0 0 0 1.134464014 1.483529864 0.9599310886 0 1.134464014 1.483529864 0.9599310886 0 1.134464014 1.483529864 0.9599310886 0 0 0 0 0 0 0 0 0 0 0 0" />
+  </keyframe>
+</mujoco>

@@ -10,7 +10,7 @@
 项目代码集中在 `code/`，模型和所需资源集中在 `models/`。本地 Python 环境及 MuJoCo 原生程序放在独立目录中，不提交到 GitHub。
 
 ```text
-Venti-Embodied_AI/
+Venti-Embodied-AI/
 ├── README.md
 ├── code/
 │   ├── requirements.txt        # Python 依赖
